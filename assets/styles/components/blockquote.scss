@@ -1,0 +1,25 @@
+blockquote {
+
+    font-size: $font-size-l;
+    font-weight: 100;
+    font-family: $font-family-design;
+
+    transition: $transition-speed-normal $transition-easing-smooth;
+
+    margin: 0;
+    padding: 0;
+
+    quotes: "“" "”" "‘" "’";
+
+}
+
+blockquote:before {
+
+    content: open-quote;
+
+}
+blockquote:after {
+
+    content: close-quote;
+
+}

@@ -1,0 +1,266 @@
+
+* {
+
+    box-sizing: border-box;
+
+}
+
+html, body {
+
+    overscroll-behavior: none;
+
+}
+
+html {
+
+    font-family: $font-family-default;
+
+    font-size: $font-size-default;
+
+    color: $white;
+    background-color: $dark;
+
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: manual;
+
+    overflow-x: hidden;
+
+    transition: background-color $transition-speed-fast $transition-easing-smooth, color $transition-speed-fast $transition-easing-smooth;
+
+    &.init {
+
+        @media screen and (max-width: $tablet-min) {
+
+            cursor: auto !important;
+
+        }
+
+        body {
+            
+            scroll-behavior: smooth;
+            opacity: 1 !important;
+
+        }
+
+    }
+
+}
+
+#page_container {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+
+}
+
+
+
+body {
+
+    // padding: 100vh 0;
+
+    opacity: 0;
+
+    overflow-x: hidden;
+
+    // padding-bottom: 50vh;
+
+    #page_container {
+
+        #page {
+
+            > header {
+
+                position: relative;
+                z-index: 3;
+        
+                transition: opacity $transition-speed-fast $transition-easing-smooth;
+        
+            }
+        
+            > main {
+        
+                // padding-top: 100vh;
+                position: relative;
+                z-index: 4;
+                // opacity: 0;
+        
+                transition: opacity $transition-speed-fast $transition-easing-smooth;
+        
+                > section {
+        
+                    position: relative;
+        
+                    &:not(.motivation) {
+
+                        margin-bottom: 25vh;
+
+                        @media screen and (min-width: $tablet-min) {
+                            
+                            margin-bottom: 50vh;
+            
+                        }
+
+                    }
+        
+                    > header {
+        
+        
+                        height: 50vh;
+        
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+        
+                        @media screen and (min-width: $tablet-min) {
+                        
+                            height: 100vh;
+            
+                        }
+        
+                        position: relative;
+        
+                        .scroll--content {
+        
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+        
+                        }
+        
+                        &:after {
+        
+                            content: "";
+        
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+        
+                            width: 100%;
+                            height: 100%;
+        
+                            transition: $transition-speed-normal $transition-easing-smooth;
+        
+                        }
+        
+        
+                        h2 {
+        
+                            position: relative;
+        
+                            z-index: 2;
+        
+                            margin: 0;
+        
+                            letter-spacing: 0.2em;
+        
+                            mix-blend-mode: overlay;
+        
+                            text-align: center;
+        
+                            will-change: transform, opacity;
+        
+                            font-size: 1.6rem;
+                            font-weight: 200;
+        
+                            &::first-letter {
+        
+                                color: red;
+        
+                            }
+        
+                            @media screen and (min-width: $tablet-min) {
+                            
+                                font-size: 1rem;
+                                font-weight: 100;
+        
+                            }
+        
+        
+                            text-transform: capitalize;
+        
+                            display: flex;
+                            justify-content: center;
+        
+                            user-select: none;
+        
+                            color: $white;
+        
+                            &::first-letter,
+                            &:first-letter {
+        
+                                text-transform: uppercase;
+        
+                            }
+        
+                        }
+        
+                        .bg-color {
+        
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+        
+                            z-index: 1;
+                            
+                            width: 100%;
+                            height: 100%;
+        
+                            background-color: $dark;
+        
+                            will-change: transform;
+        
+                        }
+        
+                    }
+        
+                }
+        
+            }
+
+        }
+
+    }
+
+
+
+    &.intro-ok {
+
+        > header {
+
+            opacity: 0;
+
+        }
+
+        > main {
+
+            opacity: 1;
+
+        }
+
+    }
+
+    small {
+
+        font-size: clamp(12px, 0.5rem, 36px);
+    
+    }
+
+}
+
+p {
+
+    line-height: $line-height-text;
+
+}
+
+
+em {
+
+    font-style: normal;
+
+}

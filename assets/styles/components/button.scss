@@ -1,0 +1,16 @@
+button,
+.button {
+
+    cursor: none;
+
+    text-decoration: none;
+
+    color: inherit;
+
+    transition: $transition-speed-normal $transition-easing-smooth;
+
+    display: inline-flex;
+
+    border: 1px solid transparent;
+
+}

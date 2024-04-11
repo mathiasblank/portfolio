@@ -1,0 +1,93 @@
+
+
+/* Colors */
+$dark               : #1D1D1D;
+$black              : black;
+$light-black        : #2e2e2e;
+$light-grey         : #2c2c2c;
+$white              : white;
+
+$neon-orange        : #ff6733;
+$neon-orange-light  : #C75028;
+
+$neon-blue          : #34d3fb;
+$neon-blue-light    : #208199;
+
+$neon-green         : #2fff31;
+$neon-green-light   : #428500;
+
+$neon-pink          : #ff329c;
+$neon-pink-light    : #CF3C83;
+
+$neue-color         : #FFD224;
+$les-fleurs-color   : #7356BF;
+$insolus-color      : #036;
+$copilates-color    : #E58900;
+$game-color         : red;
+
+$line-height-text : 1.55em;
+
+/* Spacing */
+$mm-vertical-spacing   : clamp(25px, 2vh, 150px);
+$lm-vertical-spacing   : clamp(35px, 4vh, 250px);
+$hm-vertical-spacing   : clamp(50px, 12vh, 450px);
+
+$sm-spacing             : clamp(12.5px, 1.5rem, 75px);
+$mm-spacing             : clamp(25px, 3rem, 150px);
+$lm-spacing             : clamp(50px, 4rem, 300px);
+
+/* Font size */
+$font-size-default     : clamp(18px, 3vw, 32px);
+$font-size-mm          : clamp(24px, 4.2vw, 48px);
+
+$font-size-lm          : clamp(24px, 7vw, 200px);
+
+$font-size-l           : clamp(36px, 12vw, 270px);          
+
+$font-size-lmm         : clamp(45px, 18vw, 350px);
+$font-size-hm          : clamp(60px, 25vw, 450px);
+
+/* Font family */
+$font-family-default     : 'Roboto', sans-serif;
+$font-family-design      : 'Josefin Sans', sans-serif;
+
+/* Animations */
+$transition-easing-smooth       : cubic-bezier(0.39, 0.575, 0.565, 1);
+$transition-easing-crazy        : cubic-bezier(0.07, 0.9, 1, 0.39);
+$transition-speed-fast          : 0.35s;
+$transition-speed-normal        : 1s;
+
+/* Breakpoints */
+$tablet-max: 992px;
+$tablet-min: 993px;
+
+/* Themes */
+$themes: (
+    'neon-pink'     : $neon-pink,
+    'neon-green'    : $neon-green,
+    'neon-blue'     : $neon-blue,
+    'neon-orange'   : $neon-orange
+);
+
+$themes-light: (
+    'neon-pink'     : $neon-pink-light,
+    'neon-green'    : $neon-green-light,
+    'neon-blue'     : $neon-blue-light,
+    'neon-orange'   : $neon-orange-light
+);
+
+/* xp */
+$xp: (
+    'neue'       : $neue-color,
+    'les-fleurs' : $les-fleurs-color,
+    'copilates'  : $copilates-color,
+    'insolus'    : $insolus-color,
+    'game'       : $game-color,
+);
+
+/* Line */
+$extra-line-space: .1rem;
+$extra-line-space-small: .05rem;
+
+$border-line-design: 0.05rem solid #000000;
+

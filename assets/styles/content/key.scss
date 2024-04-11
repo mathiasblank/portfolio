@@ -1,0 +1,156 @@
+
+%key-size {
+
+    width: clamp(25px, 10vw, 100px);
+    height: clamp(25px, 10vw, 100px); 
+
+}
+
+.key {
+
+    @extend %key-size;
+    @extend %no-select;
+
+    position: fixed;
+    background-size: cover;
+    cursor: pointer;
+    z-index: 1000;
+
+    will-change: left, top, transform;
+
+    transition: transform .2s ease;
+
+    &.key-white {
+
+        background-image: url(/app/public/img/key/white/fly.png) !important;
+
+    }
+    
+    &.key-white-reverse {
+
+        transform: rotateY(180deg);
+
+        background-image: url(/app/public/img/key/white/fly.png) !important;
+
+    }
+    
+    &.key-blue {
+        background-image: url(/PERSO/portfolio2021/app/public/img/key/dark/fly.png) !important;
+    }
+    
+    &.key-blue-reverse {
+
+        transform: rotateY(180deg);
+
+        background-image: url(/PERSO/portfolio2021/app/public/img/key/dark/fly.png) !important;
+    }
+
+    &:after {
+
+        content: "";
+
+        position: absolute;
+
+        width: 100%;
+        height: 100%;
+
+        transition: .5s cubic-bezier(.73,.03,.98,.42);
+
+        box-shadow: inset 0 0 10px 1px rgb(255, 255, 255);
+    
+        background-color: rgba(255, 255, 255, 0.119);
+
+        border-radius: 50%;
+
+        transform: rotateY(90deg) scale(0);
+
+    }
+
+    &.invicible {
+
+        &:after {
+    
+            border-radius: 50%;
+    
+            // animation: shield 300ms infinite backwards;
+
+            transform: rotateY(0deg) scale(1);
+
+        }
+
+        cursor: not-allowed;
+
+    }
+
+    &.catched {
+
+        transition: left 500ms ease, top 500ms ease;
+        animation: catched 250ms 4;
+
+    }
+
+}
+
+@keyframes catched {
+
+    0% {
+
+        transform: scale(1) skewX(0deg) rotate(0deg);
+
+    } 50% {
+
+        transform: scale(.9) skewY(3deg) rotate(10deg);
+    
+    } 100% {
+
+        transform: scale(1) skewX(0deg) rotate(0deg);
+
+    }
+
+}
+
+@each $theme, $color in $themes {
+
+    $animationName : $theme + shield;
+
+    @keyframes #{$animationName} {
+
+        0% {
+    
+            box-shadow: inset 0 0 10px 1px $color;
+    
+        } 50% {
+    
+            box-shadow: inset 0 0 9px 1px $color;
+        
+        } 100% {
+    
+            box-shadow: inset 0 0 10px 1px $color;
+    
+        }
+    
+    }
+
+    .theme--#{$theme} {
+
+        .key {
+
+            &.invicible {
+
+                &:after {
+
+                    box-shadow: inset 0 0 10px 1px $color;
+
+                    animation: $animationName 300ms infinite backwards;
+    
+                    background-color: rgba($color, .1);
+
+                }
+
+            }
+
+        }
+
+    }
+
+}

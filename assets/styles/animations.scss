@@ -1,0 +1,281 @@
+/* Colored animation */
+
+.anim--colored-txt {
+
+    position: relative;
+
+    &:before {
+    
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 0;
+        background-color: $dark;
+        z-index: 2;
+        transition: width $transition-speed-normal $transition-easing-smooth;
+    
+    }
+    
+    &.close:before,
+    &.active:after {
+    
+        width: 100%;
+    
+    }
+    
+    &:after {
+    
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 0;
+        mix-blend-mode: darken;
+        transition: width $transition-speed-normal $transition-easing-smooth;
+    
+    }
+
+}
+
+/* Show and hide animation */
+
+.anim--show-and-hide {
+
+    position: relative;
+    // display: inline-flex;§
+
+    &:before {
+    
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        background-color: $dark;
+        // background-size: 0 100%;
+        // background-size: 100% 100%;
+
+        // background-image: linear-gradient(180deg, $dark 100%, $dark 100%);
+        // background-repeat: no-repeat;
+
+        z-index: 2;
+        transition: width $transition-speed-normal $transition-easing-smooth;
+    
+    }
+    
+    &.active:before {
+    
+        width: 0;
+        // background-size: 0 100%;
+    
+    }
+
+    &.close:before {
+    
+        left: 0;
+        right: unset;
+        width: 100%;
+    
+    }
+
+    &.writing {
+
+        &:after {
+
+            content: "";
+            width: 2px;
+            background-color: $neon-blue;
+            height: 100%;
+            position: absolute;
+            z-index: 3;
+            left: 0;
+            height: .8em;
+            transform: translateY(0.35em);
+
+            animation-name: blink;
+            animation-duration: .5s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+
+        }
+
+
+    }
+
+}
+
+.anim--colored-link {
+
+    position: relative;
+    border: none;
+    display: inline-flex;
+    text-decoration: none;
+    color: inherit;
+
+    &:before{
+    
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 0;
+        z-index: 1;
+        mix-blend-mode: color;
+        transition: width $transition-speed-fast $transition-easing-smooth;
+    
+    }
+    
+    &:hover {
+    
+        background-color: transparent;
+    
+    }
+    
+    &:hover:before{
+    
+        left: 0%;
+        right: auto;
+        width: 100%;
+    
+    }
+
+
+}
+
+.anim--speed-fast {
+
+    &:before,
+    &:after {
+    
+        transition-duration: 0.6s !important;
+
+    }
+
+}
+
+.anim--type-writing {
+
+    display: inline-flex;
+
+    position: relative;
+
+
+    margin-right: 0.25em;
+
+    &.start {
+
+        &:before {
+
+            content: "";
+            
+            position: absolute;
+            left: 0;
+            top: 0;
+            
+            background-color: red;
+
+            width: 2px;
+            height: 100%;
+
+            animation: blink;
+            animation-duration: .3s;
+            animation-iteration-count: infinite;
+
+        }
+
+        &[data-index="2"] {
+
+            &:before {
+
+                left: 0.02em;
+
+            }
+
+        }
+
+        &[data-index="0"] { 
+
+            &:before {
+
+                left: 0.07em;
+
+            }
+
+        }
+
+    }
+
+
+
+    > span {
+
+        display: inline-flex;
+        position: relative;
+        opacity: 0;
+
+        &:empty {
+
+            width: .25em;
+
+        }
+
+        &.print {
+
+            transition: opacity .1s ease-in;
+            opacity: 1;
+
+        }
+
+        &.active {
+
+            opacity: 1;
+
+            &:after {
+
+                content: "";
+                
+                position: absolute;
+                right: 0;
+                top: 0;
+                
+                background-color: $white;
+
+                width: 2px;
+                height: 100%;
+
+                animation: blink;
+                animation-duration: .3s;
+                animation-iteration-count: infinite;
+
+            }
+
+        }
+
+    }
+
+}
+
+
+@keyframes blink {
+
+    0% {
+
+        opacity: 0;
+
+    } 50% {
+
+        opacity: 1;
+
+    } 100% {
+
+        opacity: 0;
+
+    }
+
+}

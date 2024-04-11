@@ -1,0 +1,21 @@
+%typewriting-font {
+
+    font-size: 1.6rem;
+    font-weight: 200;
+
+    @media screen and (min-width: $tablet-min) {
+
+        font-size: $font-size-lm;
+        font-weight: 100;
+
+    }
+
+}
+
+%experience-title {
+
+    font-size: $font-size-l;
+    font-family: $font-family-design;
+    font-weight: 100; 
+
+}
