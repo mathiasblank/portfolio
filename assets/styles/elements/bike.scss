@@ -1,0 +1,361 @@
+.bike-riding {
+    // position: relative;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // width: 600px;
+    // height: 600px;
+    // overflow: hidden;
+    // background-color: #94d2bd;
+    padding-left: 3rem
+  }
+  
+  .cyclist {
+    position: relative;
+    // animation: ride 1s linear infinite;
+    // top:20px;
+    height: 3.7rem;
+    width: 5.6rem;
+  }
+
+  .frame {
+    position: relative;
+    background-color: #e5383b;
+    width: 5.6rem;
+    height: 0.3rem;
+    border-radius: 0.2rem;
+    box-shadow: inset 3px -3px rgba(0,0,0,0.1);
+  }
+  
+  .frame:before, .frame:after {
+    content:"";
+    position: absolute;
+    background-color: #e5383b;
+    width:8px;
+    height: 140px;
+    top:-10px;
+  }
+  
+  .frame:before {
+    transform: rotate(35deg);
+    left: 4rem;
+    box-shadow: -4rem 85px #e5383b, 0px -1rem #e5383b;
+  }
+  
+  .frame:after {
+    transform: rotate(-35deg);
+    left: 1.6rem;
+    box-shadow: 3.75rem 2.7rem #e5383b, 0px -0.9rem #e5383b;
+  }
+  .saddle {
+    position: absolute;
+    top: -0.7rem;
+    left: 0;
+    width: 2rem;
+    height: 0.7rem;
+    background-color: black;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 0.5rem;
+  }
+
+  .wheel {
+
+    position: absolute;
+    bottom: 0;
+    width: 4.5rem;
+    height: 4.5rem;
+    // background-color: white;
+    border-radius: 50%;
+    border: .4rem solid $black;
+    z-index: 2;
+
+    &.back {
+
+      left: 0;
+      transform: translate(-91.7%, 44.4%);
+
+    }
+
+    &.front {
+
+      right: 0;
+      transform: translate(93%, 47.9%);
+
+    }
+
+    .wheel-wrapper {
+
+      position: relative;
+      width: 100%;
+      height: 100%;
+
+      animation: 1s wheel infinite linear;
+
+      .center {
+
+        width: 0.1rem;
+        height: 0.1rem;
+        background-color: $white;
+        z-index: 20;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+      }
+
+      .ray {
+
+        height: 100%;
+        width: .03rem;
+        background-color: $white;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+
+        &:before,
+        &:after {
+
+          content: "";
+          height: 100%;
+          width: .03rem;
+          background-color: $white;
+          position: absolute;
+          top: 0;
+          left: 50%;
+
+        }
+
+        &:before {
+
+          transform: translateX(-50%) rotate(45deg);
+
+        }
+
+        &:after {
+          
+          transform: translateX(-50%) rotate(-45deg);
+
+        }
+
+      }
+
+      .center-ray {
+
+        content: "";
+        height: .03rem;
+        width: 100%;
+        background-color: $white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+      }
+
+      .valve {
+
+        position: absolute;
+        bottom: 0;
+        left: 32.5%;
+        height: 0.3rem;
+        width: 0.1rem;
+        background: black;
+        transform: translateX(-50%) rotate(22.5deg);
+
+        &:after {
+
+          content: "";
+          width: 105%;
+          top: 0;
+          left: 0;
+          background-color: white;
+          position: absolute;
+          height: 20%;
+
+        }
+
+      }
+
+
+    }
+
+  }
+
+  @keyframes wheel {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+
+      transform: rotate(360deg);
+
+    }
+
+  }
+  
+  // .leftTyre, .rightTyre {
+  //   width:150px;
+  //   height:150px;
+  //   position: absolute;
+  //   border: 10px solid #333;
+  //   border-radius:50%;
+  //   z-index:1;
+  //   top:30px;
+  //   // animation: spin 1s linear infinite;
+  // }
+  
+  // .leftTyre {
+  //   left:-140px;
+  // }
+  
+  // .rightTyre {
+  //   left:155px;
+  // }
+  
+  // .leftTyre:before, .rightTyre:before {
+  //   content:"";
+  //   position: absolute;
+  //   width:135px;
+  //   height:135px;
+  //   border-radius:50%;
+  //   border: 8px solid #fcfffc;
+  // }
+  
+  // .leftTyre:after, .rightTyre:after {
+  //   content:"";
+  //   position: absolute;
+  //   width:2px;
+  //   height: 145px;
+  //   left:75px;
+  //   top:0;
+  //   background-color: #fcfffc;
+  // }
+  
+  // .spokes {
+  //   position: absolute;
+  //   width:145px;
+  //   height: 2px;
+  //   background-color: #fcfffc;
+  //   top:75px;
+  // }
+  
+  // .spokes:before, .spokes:after {
+  //   content:"";
+  //   position: absolute;
+  //    width:145px;
+  //   height: 2px;
+  //   background-color: #fcfffc;  
+  //   left:3px;
+  // }
+  
+  // .spokes:before {
+  //   transform: rotate(45deg);
+  // }
+  
+  // .spokes:after {
+  //   transform: rotate(-45deg);
+  // }
+  
+  // .wheel {
+  //   z-index:6;
+  //   position: absolute;
+  //   border-radius:50%;
+  //   background-color: #a4161a;
+  //   width:20px;
+  //   height:20px;
+  //   top:105px;
+  //   left:-65px;
+  //   box-shadow: 295px 0 #a4161a, 146px 0px #a4161a;
+  // }
+  
+  // .wheel:before {
+  //   content:"";
+  //   position: absolute;
+  //   width: 50px;
+  //   height: 50px;
+  //   border-radius:100%;
+  //   border-top: 11px solid #333;
+  //   border-left: 8px solid #e5383b;
+  //   border-bottom: 8px solid transparent;
+  //   border-right: 8px solid transparent;
+  //   transform: rotate(80deg);
+  //   top:-140px;
+  //   left:240.2px;
+  // }
+  
+  // .shadow {
+  //   position: absolute;
+  //   width:520px;
+  //   height:15px;
+  //   background-color: rgba(0,0,0,0.2);
+  //   top:510px;
+  //   left:45px;
+  //   border-radius:10px;
+  //   animation: scale 2s linear infinite;
+  // }
+
+  // @keyframes spin {
+  //   from { transform: rotate(0deg); }
+  //   to { transform: rotate(360deg); }
+  // }
+  // @keyframes scale {
+  //   0% {transform: scaleX(1);}
+  //   25% {transform: scaleX(0.9);}
+  //   50% {transform: scaleX(1);}
+  //   75% {transform: scaleX(0.9);}
+  //   100% {transform: scaleX(1);}
+  // }
+
+  /* pedals and chain */
+
+  // .pedals {
+  //   position: relative;
+  //   z-index:7;
+  //   width:50px;
+  //   height:50px;
+  //   border: 5px solid #ba181b; 
+  //   border-radius:50%;
+  //   top:85px;
+  //   left:60px;
+  //   animation: spin 1s linear infinite; 
+  // }
+  
+  // .pedals:before {
+  //   content:"";
+  //   position: absolute;
+  //   border-radius: 10px;
+  //   background-color: #adb5bd;
+  //   height: 30px;
+  //   width:5px;
+  //   left:22px;
+  //   top:-5px;
+  // }
+  
+  // .chain {
+  //   position: absolute;
+  //   top:81px;
+  // }
+  
+  // .chain:before, .chain:after {
+  //   content:"";
+  //   position: absolute;
+  //   background-color: #333;
+  //   width:140px;
+  //   height:2px;
+  //   left:-60px;
+  // }
+  
+  // .chain:before {
+  //   top:20px;
+  //   transform: rotate(-10deg);
+  // }
+  
+  // .chain:after {
+  //   top:47px;
+  //   transform: rotate(10deg);
+  // }

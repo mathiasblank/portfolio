@@ -1,0 +1,243 @@
+@keyframes up-and-down {
+    0% {
+        transform: translate(-50%, 0);
+    }
+    50% {
+        transform: translate(-50%, -20px);
+    }
+    100% {
+        transform: translate(-50%, 0);
+    }
+}
+
+html {
+
+    &.light-theme {
+
+        body .after-footer,
+        body #page_container #page > main .experience-lightbox .--container .--scroll-container .--scroll-content .experience > header h2,
+        body #page_container #page > main .experiences .experience-items .experience-item .experience-item--name,
+        .animated-title,
+        .hero,
+        .template,
+        .intro {
+
+            font-weight: 200;
+
+        }
+
+    }
+
+}
+
+.intro {
+
+    width: 100%;
+    height: 100vh;
+    // font-family: $font-family-design;
+    
+    @extend %typewriting-font;
+
+
+    transition: opacity $transition-speed-normal $transition-easing-smooth;
+    opacity: 0;
+
+    .intro--txt {
+
+        @media screen and (max-width: $tablet-max) {
+
+            font-size: 3rem;
+
+        }
+
+    }
+
+    // > span {
+
+    //     position: fixed;
+    //     top: 50%;
+    //     left: 50%;
+    //     transform: translate3d(-50%, -50%, 0);
+
+    // }
+
+}
+
+.hero {
+
+    display: flex;
+    flex-direction: column;
+
+    @extend %typewriting-font;
+
+    > p {
+
+        margin: 0;
+        // overflow: hidden;
+        z-index: 1;
+
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        &:not(:last-of-type) {
+
+            z-index: 2;
+
+        }
+        
+    }
+    
+    .scroll-down {
+
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+
+        display: inline-flex;
+        
+        transform: translateX(-50%);
+        
+        overflow: hidden;
+        place-self: center;
+        font-size: $font-size-default;
+
+        transition: .3s ease;
+
+
+        &.active {
+            
+            > span {
+                
+                transform: translateY(0);
+                
+            }
+
+            &.up-and-down {
+
+                animation: up-and-down 2s infinite;
+
+            }
+
+            &:hover {
+    
+                > span {
+    
+                    transform: translateY(25%);
+    
+                }
+    
+            }
+            
+        }
+
+        > span {
+
+            display: flex;
+
+            transition: $transition-speed-fast $transition-easing-smooth;
+
+            transform: translateY(-100%);
+
+            > span {
+
+                width: 3rem;
+                height: 2rem;
+                display: flex;
+                transition: 0.35s $transition-easing-smooth;
+                position: relative;
+
+                &:before,
+                &:after {
+
+                    position: absolute;
+                    content: "";
+                    width: 50%;
+                    height: $extra-line-space;
+
+                    background-color: $white;
+
+                    z-index: 2;
+                    transition: transform 0.3s ease-in-out;
+                    top: 35%;
+
+                    transition: 0.35s $transition-easing-smooth;
+
+                }
+
+                &:before {
+
+                    left: 7.25%;
+                    transform: rotate(45deg) translateY(-50%);
+
+                }
+
+
+                &:after {
+
+
+                    right: 7.25%;
+                    transform: rotate(-45deg) translateY(-50%);
+                    
+                }
+
+            }
+
+
+        }
+
+    }
+
+}
+
+body.intro-ok {
+
+    > header {
+
+        .template.active {
+
+            position: absolute;
+
+        }
+
+    }
+
+}
+
+html.init .intro {
+
+    opacity: 1;
+
+}
+
+.template {
+
+    // position: fixed;
+    // left: 0;
+    // top: 0;
+
+    @extend %typewriting-font;
+
+    width: 100%;
+    height: 50vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    pointer-events: none;
+    // z-index: -1;
+    opacity: 0;
+
+    > span {
+
+        &:not(:last-child) {
+
+            margin-right: .25em;
+
+        }
+
+    }
+
+}

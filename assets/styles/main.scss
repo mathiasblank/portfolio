@@ -1,0 +1,42 @@
+// Normalize & reset
+
+@import '../../node_modules/normalize.css/normalize.css';
+
+// Lib
+
+@import 'config.scss';
+@import 'animations.scss';
+@import 'helpers.scss';
+
+@import 'elements/crypt-txt.scss';
+@import 'elements/mouse.scss';
+@import 'elements/scroll-container.scss';
+@import 'elements/magneticFX.scss';
+@import 'elements/marquee.scss';
+@import 'elements/bike.scss';
+
+@import 'components/button.scss';
+@import 'components/a.scss';
+@import 'components/blockquote.scss';
+@import 'components/scroll-arrow.scss';
+
+@import 'layout/struct.scss';
+@import 'layout/header.scss';
+@import 'layout/footer.scss';
+@import 'layout/menu.scss';
+@import 'layout/loader.scss';
+
+@import 'content/intro.scss';
+@import 'content/experiences.scss';
+@import 'content/skills.scss';
+@import 'content/cut-image.scss';
+@import 'content/key.scss';
+@import 'content/ctk.scss';
+@import 'content/motivation.scss';
+@import 'content/discover-image.scss';
+
+@import 'themes.scss';
+@import 'icomoon.scss';
+@import 'extends.scss';
+
+

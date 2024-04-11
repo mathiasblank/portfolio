@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr" style="overflow: hidden;">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mathias Blank</title>
+        <link rel="stylesheet" href="assets/styles/main.css">
+        <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+
+    </head>
+
+
+    <!--
+
+        - Keywords
+        - requireJS
+        - experience reverse ?
+        - Mobile
+        - PHP le code
+        - Mettre à jour les données
+        - Tests plateforme + corrections
+        - Meta + SEO
+
+    -->
+
+    <body class="theme--neon-blue" style="opacity: 0">
+        
+        <footer class="main-footer">
+
+            <blockquote cite="Mathias Blank" class="scroll anim--colored-txt">Code never lies, he is powerful, use it to do a better World for our children.</blockquote>
+
+            <div id="contact" class="main--footer-contact anim--show-and-hide">
+
+                <p class="main-footer--mail">
+                    <a href="mailto:hello@mathias-blank.ch" class="email" data-mouse-txt="Say hello" data-mouse-color="theme">hello@mathias-blank.ch</a>
+                </p>
+
+                <div class="main-footer--socials inline-list">
+        
+                    <a href="#" class="anim--colored-link">Facebook</a>
+                    <a href="#" class="anim--colored-link">Linkedin<span class="bullet"></span></a>
+                    <a href="#" class="anim--colored-link">GitHub<span class="bullet"></span></a>
+
+                </div>
+
+            </div>
+
+            <p class="main-footer--copyright"><small>Grandson@2021</small></p>
+
+        </footer>
+
+        <div id="mouse" class="mouse"></div>
+
+
+        <script src="assets/scripts/vars.js"></script>
+        <script src="assets/scripts/app.js"></script>
+        <script src="assets/scripts/classes/Animations.js"></script>
+        <script src="assets/scripts/classes/TransFormText.js"></script>
+        <script src="assets/scripts/magneticFX.js"></script>
+        <script src="assets/scripts/intro.js"></script>
+        <script src="assets/scripts/mouse.js"></script>
+        <script src="assets/scripts/scroll.js"></script>
+        <script src="assets/scripts/classes/Incrementor.js"></script>
+        <script>
+
+
+
+            DOMReady(function() {
+
+                vars.scrollCallbacks.active.push(function(element) {
+
+                    if (element.classList.contains('incrementor') && !element.classList.contains('incrementor-complete')) {
+
+                        const ic = Incrementors.init(element, {onComplete : function(el) {
+                            element.classList.add('incrementor-complete');
+                        }});
+
+                        ic.play();
+
+                    }
+
+                });
+
+            });
+            
+
+
+        </script>
+
+    </body>
+</html>

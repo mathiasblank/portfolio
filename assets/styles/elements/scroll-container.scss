@@ -1,0 +1,34 @@
+.scroll--container {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+
+    .scroll--content {
+
+        display: flex;
+
+        width: 100%;
+        height: 100%;
+        
+    }
+
+}
+
+.scroll.active .scroll--container {
+
+    position: fixed;
+
+}
+
+.scroll.after .scroll--container {
+ 
+    top: 100%;
+    transform: translateY(-100%);
+
+}

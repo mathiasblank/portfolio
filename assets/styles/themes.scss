@@ -1,0 +1,1194 @@
+@each $theme, $color in $themes {
+
+    .theme--#{$theme} {
+
+        .theme-color {
+
+            color: $color;
+
+        }
+
+        .big-link {
+
+            transition: color $transition-speed-fast $transition-easing-smooth;
+
+            &:hover {
+
+                color: $color;
+
+            }
+
+        }
+    
+        .main-menu-trigger {
+        
+            &:before,
+            &:after {
+
+                background-color: $color;
+
+            }
+
+        }
+
+        .main-menu--items {
+    
+            ul {
+    
+                li {
+    
+                    &:after {
+
+                        background-color: $color;
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        .anim--colored-txt:after,
+        .anim--colored-link:before {
+
+            background-color: $color;
+
+        }
+        
+        .crypt-txt.highlight {
+
+            color: $color;
+
+        }
+
+        .scroll-down,
+        .scroll-up {
+
+            > span { 
+
+                > span {
+
+                    &:before,
+                    &:after {
+    
+                        background-color: $color;
+    
+                    }
+
+                }
+
+            }
+
+        }
+
+        // > header {
+
+
+
+        // }
+
+        .template {
+
+            color: $color;
+
+        }
+
+        button,
+        .button {
+
+            color: $color;
+
+        }
+
+        .loader {
+
+            [data-value] {
+
+                &.active {
+
+                    color: $color;
+
+                }
+
+            }
+
+        }
+
+        .main-menu--preview {
+    
+            .main-menu--preview--marquees {
+    
+                .marquee {
+
+                    .marquee--inner {
+    
+                        &.active {
+
+                            color: $color;
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        a {
+
+            &[href^=mailto] {
+
+                &:before,
+                &:after {
+
+                    background-color: $color;
+
+                }
+    
+            }
+
+            &.link {
+
+                &:after {
+
+                    background-color: $color;
+
+                }
+
+            }
+
+        }
+
+        .inline-list {
+
+            :not(:first-child) {
+        
+                &:after {
+
+                    background-color: $color;
+
+                }
+
+            }
+
+        }
+
+        &:not(.mouse-txt-active) {
+
+            .mouse {
+            
+                &.click {
+
+                    border-color: $color;
+
+                    &:before {
+
+                        border-color: $color;
+
+                    }
+
+                    &:after {
+
+                        background-color: $color;
+
+                    }
+
+
+                    border-color: $color;
+
+                }
+
+            }
+
+        }
+
+        &.mouse-txt-active {
+            
+            .mouse {
+
+                &.theme-color {
+
+                    &:after {
+
+                        color: $color;
+
+                    }
+
+                }
+
+            }
+            
+        }
+
+        &.mouse-crypt-active,
+        &.magnetic-button-fx-active,
+        &.magnetic-fx-letter-active {
+
+            .mouse {
+        
+                &:before {
+                    
+                    border-color: transparent;
+    
+        
+                }
+        
+                &:after {
+        
+                    color: $color;
+
+                }
+
+            }
+
+        }
+
+        .anim--type-writing {
+        
+            &.start {
+        
+                &:before {
+    
+                    background-color: $color;
+        
+                }
+
+            }
+
+            > span {
+
+                &.active {
+
+                    &:after {
+        
+                        background-color: $color;
+        
+                    }
+        
+                }
+
+            }
+
+        }
+
+        .day-night-theme-switcher {
+
+            span {
+
+                background-color: $color;
+
+            }
+
+        }
+
+        &.mouse-discover-image-active {
+
+            .mouse {
+
+                mix-blend-mode: normal;
+
+                &::after {
+
+                    color: white;
+
+                }
+
+            }
+
+        }
+
+    }
+
+    .main-menu--preview--theme {
+
+        &[data-theme=#{$theme}] {
+
+            background-color: $color;
+            
+        }
+
+    }
+
+}
+
+@each $theme, $color in $themes-light {
+
+    html {
+
+        &.light-theme {
+
+            .theme--#{$theme} {
+
+                .day-night-theme-switcher {
+
+                    span {
+        
+                        box-shadow: -5px 5px 0 1px $color;
+        
+                    }
+        
+                }
+
+                .theme-color {
+        
+                    color: $color;
+        
+                }
+        
+                .big-link {
+        
+                    transition: color $transition-speed-fast $transition-easing-smooth;
+        
+                    &:hover {
+        
+                        color: $color;
+        
+                    }
+        
+                }
+            
+                .main-menu-trigger {
+                
+                    &:before,
+                    &:after {
+        
+                        background-color: $color;
+        
+                    }
+        
+                }
+        
+                .main-menu--items {
+            
+                    ul {
+            
+                        li {
+            
+                            &:after {
+        
+                                background-color: $color;
+        
+                            }
+        
+                        }
+        
+                    }
+        
+                }
+        
+                .anim--colored-txt:after,
+                .anim--colored-link:before {
+        
+                    background-color: $color;
+        
+                }
+                
+                .crypt-txt.highlight {
+        
+                    color: $color;
+        
+                }
+        
+                .scroll-down,
+                .scroll-up {
+        
+                    > span { 
+        
+                        > span {
+        
+                            &:before,
+                            &:after {
+            
+                                background-color: $color;
+            
+                            }
+        
+                        }
+        
+                    }
+        
+                }
+        
+                .template {
+        
+                    color: $color;
+        
+                }
+        
+                button,
+                .button {
+        
+                    color: $color;
+        
+                }
+        
+                .loader {
+        
+                    [data-value] {
+        
+                        &.active {
+        
+                            color: $color;
+        
+                        }
+        
+                    }
+        
+                }
+        
+                .main-menu--preview {
+            
+                    .main-menu--preview--marquees {
+            
+                        .marquee {
+        
+                            .marquee--inner {
+            
+                                &.active {
+        
+                                    color: $color;
+        
+                                }
+        
+                            }
+        
+                        }
+        
+                    }
+        
+                }
+        
+                a {
+        
+                    &[href^=mailto] {
+        
+                        &:before,
+                        &:after {
+        
+                            background-color: $color;
+        
+                        }
+            
+                    }
+        
+                    &.link {
+        
+                        &:after {
+        
+                            background-color: $color;
+        
+                        }
+        
+                    }
+        
+                }
+        
+                .inline-list {
+        
+                    :not(:first-child) {
+                
+                        &:after {
+        
+                            background-color: $color;
+        
+                        }
+        
+                    }
+        
+                }
+        
+                &:not(.mouse-txt-active) {
+        
+                    .mouse {
+                    
+                        &.click {
+        
+                            border-color: $color;
+        
+                            &:before {
+        
+                                border-color: $color;
+        
+                            }
+        
+                            &:after {
+        
+                                background-color: $color;
+        
+                            }
+        
+        
+                            border-color: $color;
+        
+                        }
+        
+                    }
+        
+                }
+        
+                &.mouse-txt-active {
+                    
+                    .mouse {
+        
+                        &.theme-color {
+        
+                            &:after {
+        
+                                color: $color;
+        
+                            }
+        
+                        }
+        
+                    }
+                    
+                }
+        
+                &.mouse-crypt-active,
+                &.magnetic-button-fx-active,
+                &.magnetic-fx-letter-active {
+        
+                    .mouse {
+                
+                        &:before {
+                            
+                            border-color: transparent;
+            
+                
+                        }
+                
+                        &:after {
+                
+                            color: $color;
+        
+                        }
+        
+                    }
+        
+                }
+        
+                .anim--type-writing {
+                
+                    &.start {
+                
+                        &:before {
+            
+                            background-color: $color;
+                
+                        }
+        
+                    }
+        
+                    > span {
+        
+                        &.active {
+        
+                            &:after {
+                
+                                background-color: $color;
+                
+                            }
+                
+                        }
+        
+                    }
+        
+                }
+        
+                &.mouse-discover-image-active {
+        
+                    .mouse {
+        
+                        &::after {
+        
+                            color: white;
+        
+                        }
+        
+                    }
+        
+                }
+        
+            }
+            
+            .main-menu--preview--theme {
+
+                &[data-theme=#{$theme}] {
+    
+                    background-color: $color;
+                    
+                }
+    
+            }
+
+            .skills--category {
+
+                .skills--category--list {
+            
+                    article {
+        
+                        &.neon-pink {
+        
+                            &:before{
+        
+                                background-color: $neon-pink-light;
+        
+                            }
+        
+                        }
+        
+                        &.neon-green {
+        
+                            &:before{
+        
+                                background-color: $neon-green-light;
+        
+                            }
+        
+                        }
+        
+                        &.neon-blue {
+        
+                            &:before{
+        
+                                background-color: $neon-blue-light;
+        
+                            }
+
+        
+                        }
+        
+        
+                        &.neon-orange {
+        
+                            &:before{
+        
+                                background-color: $neon-orange-light;
+        
+                            }
+        
+                        }
+        
+                    }
+
+            
+                    &.skills--category--front-end {
+            
+                        color: $neon-pink-light;
+            
+                        .skills--category--progress {
+                            
+                            border-color: $neon-pink-light;
+            
+                        }
+            
+                    }
+            
+                    &.skills--category--back-end {
+            
+                        color: $neon-green-light;
+            
+                        .skills--category--progress {
+        
+                            border-color: $neon-green-light;
+            
+                        }
+        
+                    }
+            
+                    &.skills--category--cms-frameworks {
+            
+                        color: $neon-blue-light;
+            
+                        .skills--category--progress {
+            
+                            border-color: $neon-blue-light;
+            
+                        }
+        
+                    }
+            
+                    &.skills--category--software {
+            
+                        color: $neon-orange-light;
+            
+                        .skills--category--progress {
+            
+                            border-color: $neon-orange-light;
+            
+                        }
+        
+                    }
+            
+                    &.skills--category--pro-skills {
+            
+                        color: $white;
+            
+                        .skills--category--progress {
+            
+                            border-color: $white;
+            
+                        }
+        
+                    }
+        
+                }
+        
+            }
+
+            .experience-lightbox {
+
+                .--container {
+
+                    .--scroll-container {
+
+                        .--scroll-content {
+
+                            .experience {
+
+                                &.ready {
+
+                                    .experience--type {
+
+                                        opacity: .5 !important;
+
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+                .marquee {
+    
+                    .marquee--inner {
+    
+                        span {
+    
+                            color: $black !important;
+    
+                        }
+    
+                    }
+    
+                }
+
+            }
+
+
+        }
+
+    }
+
+}
+
+html {
+
+    &.light-theme {
+
+        color: $dark;
+
+        .anim--colored-txt:after {
+        // .anim--colored-link:not(.experience-item--name):before {
+
+            mix-blend-mode: screen;
+
+        }
+
+        .anim--colored-link:before {
+
+            mix-blend-mode: color;
+
+        }
+
+        .main-menu {
+
+            .main-menu--items {
+
+                .main-menu--item {
+
+                    span {
+
+                        &::before {
+
+                            background-color: $white;
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+            .anim--colored-link:before {
+
+                mix-blend-mode: screen;
+    
+            }
+
+        }
+
+        .mouse {
+
+            color: $dark;
+            border-color: $dark;
+
+            &:after {
+
+                background-color: $dark;
+
+            }
+
+        }
+        
+        body {
+
+            background-color: $white;
+
+            #page_container > #page {
+
+                > header {
+    
+                    background-color: $white;
+    
+                }
+
+                main {
+                    
+                    .experience-lightbox .--container .--scroll-container .--scroll-content {
+
+                        .experience {
+
+                            .experience--content {
+
+                                div.experience--info {
+                                    
+                                    > .experience--info--inner {
+
+                                        > .experience--info-item {
+
+                                            > :nth-child(2) {
+
+                                                font-weight: 300;
+
+                                            }
+
+                                        }
+
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                    > section {
+
+                        > header {
+                            
+                            h2 {
+    
+                                color: $dark;
+    
+                            }
+    
+                        }
+    
+                    }
+
+                }
+
+            }
+            
+
+            .main-menu {
+             
+                .main-menu--items {
+
+                    background-color: whitesmoke;
+
+                }
+
+                .main-menu--preview {
+
+                    background: white;
+                    color: #dddddd;
+
+                    .main-menu--preview--themes {
+
+                        background-color: whitesmoke;
+
+                    }
+
+                }
+
+            }
+
+            .intro {
+
+                .anim--colored-txt:before{
+
+                    background-color: $white;
+
+                }
+
+            }
+
+            &.mouse-txt-active {
+            
+                &:not(.mouse-discover-image-active) {
+            
+                    .mouse {
+                
+                        mix-blend-mode: darken;
+
+                    }
+
+                }
+
+            }
+
+            &.magnetic-button-fx-active {
+
+                .mouse {
+    
+                    mix-blend-mode: color;
+    
+                }
+    
+            }
+
+            #page_container #page > main {
+
+                .experience-lightbox {
+
+                    background-color: $white;
+
+                    &:before{
+
+                        background-color: $white;
+
+                    }
+
+                    .experience {
+
+                        background-color: $white;
+
+                        .experience--type {
+
+                            opacity: 1;
+
+                            .marquee {
+
+                                .marquee--inner {
+
+                                    span {
+            
+                                        color: $black;
+            
+                                    }
+
+                                }
+
+                            }                        
+
+                        }
+                        
+                        .experience--keywords {
+                            
+                            .experience--keyword {
+                                
+                                .experience--keyword--number {
+                                
+                                    &::before {
+
+                                        color: $black;
+
+                                    }
+
+                                }
+
+                            }
+
+                        }
+                            
+
+                    }
+
+                    .anim--colored-link {
+
+                        &::before {
+
+                            mix-blend-mode: screen;
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+            .skills {
+
+                .skills--category {
+ 
+                    .skills--category--list {
+          
+                        article {
+
+                            &.white {
+
+                                color: $dark;
+
+                                &::before {
+
+                                    background-color: $black;
+
+                                }
+
+                            }
+
+                            span.white {
+
+                                color: $dark;
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+                
+            .discover-image {
+            
+                background-color: $white;
+
+            }
+
+        }
+
+        .anim--show-and-hide:before {
+
+            background-color: $white;
+
+        }
+
+        .day-night-theme-switcher {
+
+            span {
+    
+                top: 0;
+                left: 0;
+
+                background-color: transparent;
+
+                transition: $transition-speed-fast $transition-easing-smooth;
+                // background-color: $dark;
+                box-shadow: -5px 5px 0 1px red;
+
+                transform: translate(5px, -5px);
+    
+            }
+        
+        }
+
+    }
+
+    &:not(.light-theme) {
+
+        .experiences {
+
+            .experience-item {
+
+                border-bottom: $border-line-design;
+                border-bottom-color: $white;
+
+                .experience-item--name {
+
+                    color: $white;
+
+                    &::before {
+
+                        mix-blend-mode: color;
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    body {
+
+        &.allow-to-navigate {
+
+            .day-night-theme-switcher {
+
+                transform: scale(1);
+                pointer-events: all;
+                opacity: 1;
+
+            }
+
+        }
+
+    }
+
+}
+
+.day-night-theme-switcher {
+
+    position: fixed;
+    right: 1rem;
+    top: 1rem;
+    width: 1rem;
+    height: 1rem; 
+    min-width: 40px;
+    min-height: 40px;
+    z-index: 6;
+    background-color: transparent;
+    transition: transform $transition-speed-fast $transition-easing-smooth;
+    transform: scale(0);
+    pointer-events: none;
+    opacity: 0;
+    
+    span {
+        
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        height: 100%;
+        width: 100%;
+
+        background-color: transparent;
+
+        transform: translate(-50%, -50%);
+
+        border-radius: 50%;
+
+        transition: all $transition-speed-fast $transition-easing-smooth;
+
+    }
+
+}
+

@@ -1,0 +1,23 @@
+{
+  "name": "mab",
+  "version": "1.0.0",
+  "description": "Packe mab for development",
+  "author": "mab",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^1.5.3",
+    "grunt-cli": "^1.4.3",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-cssmin": "^4.0.0",
+    "grunt-contrib-jshint": "^3.0.0",
+    "grunt-contrib-uglify": "^5.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-sass": "^3.1.0",
+    "load-grunt-tasks": "^5.1.0",
+    "node-sass": "^8.0.0"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1",
+    "sass": "^1.72.0"
+  }
+}

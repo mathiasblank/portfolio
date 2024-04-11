@@ -1,0 +1,68 @@
+.no-overflow-f {
+
+    overflow: hidden !important;
+
+}
+
+.flex-center {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.neon-blue {
+
+    color: $neon-blue;
+
+}
+
+.neon-green {
+
+    color: $neon-green;
+
+}
+
+.neon-pink {
+
+    color: $neon-pink;
+
+}
+
+.neon-orange {
+
+    color: $neon-orange;
+
+}
+
+html {
+
+    &.light-theme {
+
+        @each $theme, $color in $themes-light {
+
+            .#{$theme} {
+
+                color: $color;
+
+            }
+
+        }
+
+    }
+
+}
+
+.white {
+
+    color: $white;
+
+}
+
+.neue-area {
+
+    background-color: $neue-color;
+    color: $black;
+
+}

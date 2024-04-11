@@ -1,0 +1,90 @@
+$initX: 50vw;
+$initY: 50vh;
+$size: clamp(3rem, 20vmin, 10rem);
+
+body {
+
+    .discover-image {
+
+        .mask {
+
+            &.transition-active {
+                
+                transition: clip-path $transition-speed-fast linear;
+
+            }
+
+        }
+
+    }
+
+}
+
+.discover-image {
+
+    position: relative;
+    height: auto;
+    width: 100vw;
+    max-width: 1800px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    // aspect-ratio: 1 / 1;
+
+    display: flex;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background-color: $dark;
+
+    &::before {
+
+        content: attr(data-message);
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        transform: translate3d(-50%, -50%, 0);
+
+        z-index: 1;
+
+        color: $white;
+
+        @extend %experience-title;
+
+        text-align: center;
+
+    }
+
+    .mask {
+
+        transition: clip-path $transition-speed-fast linear;
+
+        clip-path: circle(var(--size) at $initX $initY);
+
+        &.transition-off {
+
+            transition-duration: 0s;
+
+        }
+
+        video {
+
+            width: 100%;
+            // height: 100%
+
+        };
+
+    }
+
+    img {
+
+        object-fit: cover;
+        height: 100%;
+
+    }
+
+}

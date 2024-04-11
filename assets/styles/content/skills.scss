@@ -1,0 +1,311 @@
+
+
+.skills {
+
+    .skills--categories {
+
+        position: relative;
+        height: 800vh;
+
+        .scroll--container {
+
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+
+            .skills--category {
+
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                z-index: 1;
+                // opacity: 0;
+
+            }
+
+        }
+
+        &.active {
+
+            .scroll--container {
+
+                position: fixed;
+
+            }
+
+        }
+
+    }
+
+    
+    .skills--category {
+
+        height: auto;
+        display: flex;
+        align-items: center;
+
+        &:not(:last-child) {
+
+            margin-bottom: 25vh;
+    
+        }
+        
+        .skills--category--list {
+    
+            position: relative;
+            height: auto;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            article {
+
+                position: relative;
+
+                width: 100%;
+                
+                padding: $mm-spacing 0;
+
+                overflow: hidden;
+
+                &:not(last-child) {
+
+                    margin-bottom: $hm-vertical-spacing;
+
+                }
+
+                &:before {
+
+                    content: "";
+
+                    position: absolute;
+                    top: 0;
+                    
+                    width: clamp(100px, 25vh, 700px);
+                    height: calc(100% + #{$mm-spacing});
+
+                    background-color: red;
+
+                }
+
+                &.neon-pink {
+
+                    &:before{
+
+                        background-color: $neon-pink;
+                        right: 10%;
+
+                    }
+
+                }
+
+                &.neon-green {
+
+                    &:before{
+
+                        background-color: $neon-green;
+                        left: 10%;
+
+                    }
+
+                }
+
+                &.neon-blue {
+
+                    &:before{
+
+                        background-color: $neon-blue;
+                        left: 40%;
+
+                    }
+
+                    &:nth-of-type(2) {
+
+                        right: 10%;
+
+                    }
+
+                }
+
+
+                &.neon-orange {
+
+                    &:before{
+
+                        background-color: $neon-orange;
+                        right: 20%;
+
+                    }
+
+                }
+
+                &.white {
+
+                    &:before{
+
+                        background-color: $white;
+                        left: 10%;
+
+                    }
+
+                }
+
+            }
+    
+            .marquee {
+    
+                mix-blend-mode: difference;
+                height: auto;
+                pointer-events: unset;
+
+                .marquee--inner {
+
+                    transform: translate3d(0, 0, 0);
+
+                    > span {
+
+                        font-size: $font-size-l;
+
+                    }
+
+                }
+    
+            }
+
+            .skills--category--title {
+    
+                @media screen and (min-width: $tablet-min) {
+    
+                    display: none;                
+    
+                }
+        
+                font-size: $font-size-mm;
+                text-align: center;
+                align-self: center;
+
+                mix-blend-mode: difference;
+                
+                margin-top: 3em;
+
+                > span {
+
+                    opacity: .1;
+
+                }
+
+            }
+            .skills--category--progress {
+    
+                content: "";
+                position: absolute;
+                bottom: -1em;
+                width: 35vw;
+                min-width: 300px;
+                height: 100%;
+                mix-blend-mode: difference;
+    
+                right: 1rem;
+
+                display: flex;
+                align-items: flex-end;
+                justify-content: center;
+
+                border-right: clamp(10px, 1em, 150px) solid;
+                background-color: $dark;
+
+                overflow: hidden;
+                
+                @media screen and (min-width: $tablet-min) {
+                    
+                    right: 10%;
+
+                }
+
+                > span {
+
+                    margin-bottom: 1em;
+
+                    font-size: $font-size-mm;
+
+                    color: $white;
+
+                    position: absolute;
+                    bottom: 0;
+
+                }
+    
+            }
+    
+            &.skills--category--front-end {
+
+                --move-speed: 18s;
+    
+                color: $neon-pink;
+    
+                .skills--category--progress {
+                    
+                    border-color: $neon-pink;
+    
+                }
+    
+            }
+    
+            &.skills--category--back-end {
+    
+                color: $neon-green;
+    
+                .skills--category--progress {
+
+                    border-color: $neon-green;
+    
+                }
+
+            }
+    
+            &.skills--category--cms-frameworks {
+    
+                color: $neon-blue;
+    
+                .skills--category--progress {
+    
+                    border-color: $neon-blue;
+    
+                }
+
+            }
+    
+            &.skills--category--software {
+    
+                color: $neon-orange;
+    
+                .skills--category--progress {
+    
+                    border-color: $neon-orange;
+    
+                }
+
+            }
+    
+            &.skills--category--pro-skills {
+    
+                color: $white;
+    
+                .skills--category--progress {
+    
+                    border-color: $white;
+    
+                }
+
+            }
+
+        }
+
+    }
+
+}

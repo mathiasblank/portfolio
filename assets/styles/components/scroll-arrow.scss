@@ -1,0 +1,94 @@
+.scroll-arrow {
+
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+
+    display: inline-flex;
+    
+    transform: translateX(-50%);
+
+    place-self: center;
+    font-size: $font-size-default;
+
+    pointer-events: none;
+
+    > span {
+
+
+        display: flex;
+
+        transition: $transition-speed-fast $transition-easing-smooth;
+
+        transform: translateY(-100%);
+
+        > span {
+
+            width: 3rem;
+            height: 2rem;
+            display: flex;
+            transition: 0.35s $transition-easing-smooth;
+            position: relative;
+
+            &:before,
+            &:after {
+
+                position: absolute;
+                content: "";
+                width: 50%;
+                height: $extra-line-space;
+
+                background-color: $white;
+
+                z-index: 2;
+                transition: transform 0.3s ease-in-out;
+                top: 35%;
+
+                transition: 0.35s $transition-easing-smooth;
+
+            }
+
+            &:before {
+
+                left: 7.25%;
+                transform: rotate(45deg) translateY(-50%);
+
+            }
+
+
+            &:after {
+
+
+                right: 7.25%;
+                transform: rotate(-45deg) translateY(-50%);
+                
+            }
+
+        }
+
+
+    }
+
+    &.active {
+
+        pointer-events: all;
+        
+        > span {
+            
+            transform: translateY(0);
+            
+        }
+
+        &:hover {
+
+            > span {
+
+                transform: translateY(25%);
+
+            }
+
+        }
+        
+    }
+
+}

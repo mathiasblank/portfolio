@@ -1,0 +1,792 @@
+
+body #page_container #page > main {
+
+    .experiences {
+
+        .experience-items {
+
+            padding: 0 $mm-spacing;
+
+            color: $black;
+
+            margin: auto;
+
+            max-width: 1000px;
+            overflow: visible;
+
+            .experience-item {
+
+                display: flex;
+
+                align-items: center;
+
+                margin-bottom: $mm-spacing;
+
+                border-bottom: $border-line-design;
+
+                .experience-item--number {
+
+                    display: flex;
+
+                    font-size: 1rem;
+                    font-weight: 300;
+
+                    margin-right: 0.2em;
+
+                }
+
+                .experience-item--name {
+
+                    display: inline-block;
+
+                    margin: 0;
+
+                    @extend %experience-title;
+
+                    transition: $transition-speed-fast $transition-easing-smooth;
+
+                }
+
+            }
+
+        }
+
+    }
+
+    .experience-lightbox {
+
+        overscroll-behavior: none;
+
+        .--container {
+
+            position: relative;
+
+            width: 100%;
+            height: 100%;
+
+            .--scroll-container {
+
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+
+                .--scroll-content {
+
+                    .experience {
+    
+                        &.ready {
+                
+                            .experience--type {
+                
+                                opacity: .1;
+                
+                            }
+                
+                            .experience--content {
+                
+                                opacity: 1;
+                
+                            }
+                
+                        }
+                
+                        > header {
+                
+                            text-align: center;
+                            margin-bottom: $lm-vertical-spacing;
+                
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                
+                            h2 {
+                
+                                display: inline;
+                
+                                @extend %experience-title;
+                
+                                margin: 0.2em;
+                
+                                opacity: 0;
+                
+                                &.active {
+                
+                                    opacity: 1;
+                
+                                }
+                
+                            }
+                
+                        }
+            
+                        .experience--type {
+                
+                            opacity: 0;
+                            color: black;
+                            position: relative;
+                            text-transform: uppercase;
+                
+                            transition: opacity $transition-speed-fast $transition-easing-smooth;
+                
+                            .marquee {
+                
+                                .marquee--inner {
+                
+                                    animation: none;
+                
+                                    span {
+                
+                                        color: white;
+                                        mix-blend-mode: soft-light;
+                                        font-size: 1rem;
+                
+                                    }
+                
+                                }
+                
+                            }
+                
+                        }
+                
+                        .experience--content {
+                
+                            display: flex;
+                
+                            flex-direction: column;
+                
+                            margin-top: $lm-vertical-spacing;
+                
+                            opacity: 0;
+                
+                            transition: opacity $transition-speed-fast $transition-easing-smooth;
+                
+                            > div {
+                
+                                &.experience--keywords {
+                                    
+                                    position: relative;
+                                    
+                                    min-height: 100vh;
+                
+                                    padding-top: $lm-vertical-spacing;
+                                    
+                                    // margin-bottom: $hm-vertical-spacing;
+                            
+                                    @media screen and (max-width: $tablet-max) {
+                
+                                        min-height: unset;
+                                        height: clamp(300px, 60vh, 700px);
+                
+                                    }
+                
+                                    .experience--keyword {
+                
+                                        position: absolute;
+                
+                                        display: flex;
+                                        flex-direction: column;
+                                        align-items: center;
+                                        justify-content: center;
+                
+                                        &:first-child {
+                
+                                            top: 25%;
+                                            left: 17%;
+                
+                                        }
+                
+                                        &:nth-child(2) {
+                
+                                            top: 0;
+                                            right: 10%;
+                
+                                        }
+                
+                                        &:nth-child(3) {
+                
+                                            bottom: 0;
+                                            left: 15%;
+                
+                                        }
+                
+                                        &:nth-child(4) {
+                
+                                            bottom: 20%;
+                                            right: 20%;
+                                            
+                                        }
+                
+                                        .experience--keyword--number,
+                                        .experience--keyword--number:before {
+                
+                                            color: $black;
+                                            font-family: $font-family-design;
+                                            font-weight: 100;
+                                            font-size: $font-size-l;
+                
+                                        }
+                
+                                        .experience--keyword--number {
+                
+                                            position: relative;
+                
+                                            color: transparent;
+                
+                                            // border-top: $border-line-design;
+
+                                            // &::after {
+
+                                            //     content: "";
+
+                                            //     position: absolute;
+                                            //     top: 0;
+                                            //     left: 50%;
+
+                                            //     border-bottom: 1px solid red;
+
+                                            // }
+                
+                                            &:before {
+                
+                                                content: attr(data-number);
+
+                                                // position: absolute;§
+                
+                                                // top: 0;
+                                                // left: 50%;
+                
+                                                // transform: translate3d(-50%, var(--ty), 0);
+                
+                                            }
+                
+                                        }
+                
+                                        .experience--keyword--description {
+                
+                                            font-size: $font-size-mm;
+                
+                                            color: $dark;                            
+                
+                                            @media screen and (min-width: $tablet-min) {
+                
+                                                opacity: 0;
+                
+                                            }
+                
+                                        }
+                
+                                    }
+                                    
+                                }
+                                
+                                &.experience--info {
+                                    
+                                    position: relative;
+                                    
+                                    padding: $mm-spacing $sm-spacing 0 $sm-spacing;
+                
+                                    @media screen and (max-width: $tablet-max) {
+                
+                                        padding-left: 0;
+                                        padding-right: 0;
+                
+                                    }
+                
+                                    display: flex;
+                                    flex-direction: column;
+                
+                                    > .experience--info--inner {
+                                    
+                                        position: relative;
+                
+                                        display: grid;
+                                        row-gap: 2.5em;
+                
+                                        @media screen and (min-width: $tablet-min) {
+                                            
+                                            row-gap: 3.5em;
+                
+                                        }
+                                        
+                                        padding: $mm-spacing $sm-spacing;
+                                        padding-left: 1rem;
+                                        padding-right: 1rem;
+                
+                                        max-width: 1600px;
+                                        margin: 0 auto;
+                
+                                        @media screen and (min-width: $tablet-min) {
+                                            
+                                            padding: $mm-spacing 0;
+                
+                                        }
+                
+                                        $first-colum-width: minmax(auto, 300px);
+                
+                                        > .experience--info-item {
+                
+                                            line-height: 1.55;
+                
+                                            display: grid;
+                
+                                            border-top: 1px solid $light-grey;
+                
+                                            padding-top: 1em;
+                
+                                            @media screen and (min-width: $tablet-min) {
+                                            
+                                                grid-template-columns: $first-colum-width 60%;
+                                            
+                                            }
+                
+                                            column-gap: 2em;
+                
+                                            &.--skills,
+                                            &.--projects {
+                
+                                                ul {
+                
+                                                    display: flex;
+                                                    flex-wrap: wrap;
+                                                    gap: 1em;
+                
+                                                }
+                
+                                            }
+                
+                                            ul:not(.styled) {
+                
+                                                padding: 0;
+                                                margin: 0;
+                
+                                                li {
+                
+                                                    list-style-type: none;
+                
+                                                }
+                
+                                            }
+                
+                
+                                            @media screen and (max-width: $tablet-max) {
+                
+                                                > :first-child {
+                
+                                                    margin-bottom: 0.5em;
+                
+                                                }
+                
+                                            }
+                
+                                            > :nth-child(2) {
+                
+                                                font-weight: 100;
+                
+                
+                                            }
+                
+                                        }
+                
+                                        @media screen and (min-width: $tablet-min) {
+                
+                                            .experience--info--scroll-bar {
+                
+                                                display: none;
+                
+                                                position: absolute;
+                                                top: 0;
+                                                left: $first-colum-width; 
+                
+                                                height: calc(100% + #{$mm-spacing});
+                
+                                                height: 100%;
+                
+                                                width: 2px;
+                
+                                                z-index: 1;
+                
+                                            }
+                
+                                        }
+                
+                                        p {
+                
+                                            position: relative;
+                
+                                            z-index: 2;
+                
+                                            &:before {
+                
+                                                content: attr(data-time);
+                
+                                                position: absolute;
+                
+                                                left: 0;
+                                                top: 0;
+                
+                                                transform: translateY(calc(-100% - 1.15em));
+                
+                                                @media screen and (min-width: $tablet-min) {
+                
+                                                    top: 50%;
+                                                    transform: translate3d(-80%, -50%, 0) rotateZ(270deg);
+                
+                                                }
+                
+                                                opacity: .2;
+                
+                                                font-size: $font-size-mm;
+                                                font-weight: 100;
+                
+                                            }
+                
+                                        }
+                
+                                        .magnetic-button {
+                
+                                            position: relative;
+                
+                                            z-index: 2;
+                
+                                        }
+                
+                                    }
+                
+                                }
+                
+                            }
+                
+                            p {
+                
+                                margin: 0;
+                                margin-bottom: $mm-vertical-spacing;
+                
+                            }
+                
+                            @media screen and (min-width: $tablet-min) {
+                
+                                .magnetic-button {
+                
+                                    justify-self: center;
+                
+                                }
+                
+                            }
+                
+                        }
+                
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
+@each $theme, $color in $xp {
+
+    body[class*=theme--neon-] 
+    
+    #page_container #page > main {
+
+        .#{$theme}-color {
+        
+            > header {
+        
+                color: $color;
+        
+            }
+
+            mark {
+
+                color: $color;
+                background-color: transparent;
+                font-weight: 400;
+
+            }
+        
+            .magnetic-button .magnetic-button--inner {
+        
+                // background-color: $color;
+                color: $color;
+                border-color: $color;
+        
+                border-radius: 50%;
+        
+            }
+        
+            .experience-item--name {
+        
+                &:before {
+        
+                    background-color: $color;
+        
+                }
+        
+            }
+        
+            .experience--info--scroll-bar {
+        
+                background-color: $color;
+        
+            }
+        
+            p {
+        
+                &:before {
+        
+                    color: $color;
+        
+                }
+        
+            }
+        
+            .experience--type {
+
+                .marquee {
+        
+                    .marquee--inner {
+        
+                        span {
+
+                            // color: $color;
+                            color: $white;
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+            .experience-item--number {
+                            
+                color: $color;                    
+        
+            }
+        
+            &.experience {
+
+                &:not(.active) {
+
+                    display: none;
+
+                }
+        
+                &.color-area-active {
+        
+                    background-color: $color;
+                    color: $color;
+        
+                    .experience--info--inner {
+        
+                        > .experience--info-item {
+        
+                            opacity: 0;
+        
+                        }
+        
+                    }
+        
+                }
+        
+                h2 {
+        
+                    color: $color;
+        
+                }
+        
+            }
+
+            > footer {
+
+                a.anim--colored-link {
+    
+                    color: $color;
+    
+                }
+    
+            }
+
+        }
+
+    }
+
+}
+
+body #page_container #page > main {
+
+    .experience-lightbox {
+
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        width: 100vw;
+        height: 100vh;
+
+        background-color: $dark;
+
+        transform: scale(0);
+
+        pointer-events: none;
+
+        overflow: hidden auto;
+
+        z-index: 5;
+
+        &:before {
+
+            content: "";
+
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            opacity: 1;
+
+            background-color: $dark;
+
+            transition: transform $transition-speed-normal $transition-easing-smooth;
+            transform: translateY(0);
+
+            z-index: 2;
+
+        }
+
+        &.ready {
+
+            &:before {
+
+                transform: translateY(100%);
+
+                opacity: 0;
+
+                pointer-events: none;
+
+                transition: transform $transition-speed-normal $transition-easing-smooth, opacity 0s $transition-easing-smooth $transition-speed-normal;
+
+            }
+
+            .experience {
+
+                transition: background $transition-speed-fast $transition-easing-smooth;
+        
+            }
+
+        }
+
+        &.closing {
+
+            &:before {
+
+                transform: translateY(0);
+
+                opacity: 1;
+
+                pointer-events: none;
+
+                transition: none;
+
+            }
+
+        }
+
+        .experience {
+
+            background-color: $dark;
+
+        }
+
+    }
+
+}
+
+body {   
+
+    &.experiences-lightbox-active {
+
+        #page_container #page > main {
+
+            .experience-lightbox {
+
+                transform: scale(1);
+                pointer-events: all;
+
+            }
+            
+        }
+
+        @extend %close-menu-trigger;
+
+    }
+
+}
+
+.experience-lightbox {
+
+    .anim--colored-link {
+
+        &::before {
+
+            mix-blend-mode: darken;
+
+        }
+
+    }
+
+    footer {
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        height: 5em;
+
+    }
+
+}
+
+.animated-title {
+
+    position: fixed;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0);
+    margin: 0;
+    padding: 0;
+
+    @extend %experience-title;
+
+    &.active {
+
+        transform: scale(1);
+        opacity: 1;
+
+    }
+
+    &.transition-active {
+
+        transition: font-size $transition-speed-normal $transition-easing-smooth, color $transition-speed-normal $transition-easing-smooth, left $transition-speed-normal $transition-easing-smooth, top $transition-speed-normal $transition-easing-smooth;
+
+    }
+
+    &.back {
+
+        transition: font-size $transition-speed-normal $transition-easing-smooth, color $transition-speed-fast $transition-easing-smooth, left $transition-speed-normal $transition-easing-smooth, top $transition-speed-normal $transition-easing-smooth;
+
+    }
+
+}
