@@ -7,26 +7,6 @@ module.exports = function(grunt) {
 
     //Project configuration
     grunt.initConfig({
-        
-        // - Sass
-        // "dart-sass": {
-        //     target: {
-        //         options: {
-        //             sourceMap: false
-        //         },
-        //         files: {
-        //             'assets/styles/main-sass.css' : 'assets/styles/main.scss'
-        //         }
-        //     }
-        // },
-
-        // sass: {                    
-        //     dist: {                     
-        //         files: {
-        //             'assets/styles/main-sass.css' : 'assets/styles/main.scss'
-        //         }
-        //     }
-        // },
 
         // - SASS
         sass: {
@@ -44,6 +24,10 @@ module.exports = function(grunt) {
         // - CSS Minifier
         cssmin: {
             target: {
+                options: {
+                    sourceMap: true,
+                    root: 'assets/styles/main.css'
+                },
                 files: [{
                     src: 'assets/styles/main.css',
                     dest: 'app/public/css/min.css',
@@ -54,7 +38,8 @@ module.exports = function(grunt) {
         // - Concat
         concat: {
             options : {
-                separator : ''
+                separator : '',
+                sourceMap: true
             },
             js : { // - nom de la tâche
                 // src : config.js.scripts_order,

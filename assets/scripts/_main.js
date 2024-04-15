@@ -2217,8 +2217,8 @@ define('scroll', ['vars'], function(vars) {
             const rect = title.getBoundingClientRect();
 
             let offset = {
-                top: 200,
-                bottom: -200
+                top: 100,
+                bottom: -100
             };
             if (rect.top > window.innerHeight + offset.top || rect.bottom < -window.innerHeight + offset.bottom) return;
 
@@ -3760,3 +3760,5 @@ function(vars, Incrementors, lerping, lightboxLerping) {
     });
 
 });
+
+//# sourceMappingURL=_main.js.map

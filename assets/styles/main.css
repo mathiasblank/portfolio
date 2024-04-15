@@ -1557,6 +1557,7 @@ body #page_container #page > main .experience-lightbox .--container .--scroll-co
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-bottom: clamp(25px, 3rem, 150px);
 }
 body #page_container #page > main .experience-lightbox .--container .--scroll-container .--scroll-content .experience .experience--content > div.experience--keywords .experience--keyword:first-child {
   top: 25%;
@@ -1599,7 +1600,7 @@ body #page_container #page > main .experience-lightbox .--container .--scroll-co
 }
 body #page_container #page > main .experience-lightbox .--container .--scroll-container .--scroll-content .experience .experience--content > div.experience--info {
   position: relative;
-  padding: clamp(25px, 3rem, 150px) clamp(12.5px, 1.5rem, 75px) 0 clamp(12.5px, 1.5rem, 75px);
+  padding: 0 clamp(12.5px, 1.5rem, 75px) 0 clamp(12.5px, 1.5rem, 75px);
   display: flex;
   flex-direction: column;
 }
@@ -2440,7 +2441,8 @@ body.experiences-lightbox-active #page_container #page > main .experience-lightb
   text-align: center;
   display: flex;
   justify-content: center;
-  transform: translate3d(-50%, -50%, 0) scale(2.5);
+  transform: translate3d(-50%, -50%, 0) scale(1);
+  font-size: 250%;
   opacity: 0;
 }
 .ctk-area .ctk-flash-msg:not(.active) {
@@ -3277,6 +3279,9 @@ html.light-theme .experience-lightbox .--container .--scroll-container .--scroll
 html.light-theme .experience-lightbox .marquee .marquee--inner span {
   color: black !important;
 }
+html.light-theme .motivation blockquote {
+  color: white;
+}
 
 html.light-theme .theme--neon-green .day-night-theme-switcher span {
   box-shadow: -5px 5px 0 1px #428500;
@@ -3408,6 +3413,9 @@ html.light-theme .experience-lightbox .--container .--scroll-container .--scroll
 }
 html.light-theme .experience-lightbox .marquee .marquee--inner span {
   color: black !important;
+}
+html.light-theme .motivation blockquote {
+  color: white;
 }
 
 html.light-theme .theme--neon-blue .day-night-theme-switcher span {
@@ -3541,6 +3549,9 @@ html.light-theme .experience-lightbox .--container .--scroll-container .--scroll
 html.light-theme .experience-lightbox .marquee .marquee--inner span {
   color: black !important;
 }
+html.light-theme .motivation blockquote {
+  color: white;
+}
 
 html.light-theme .theme--neon-orange .day-night-theme-switcher span {
   box-shadow: -5px 5px 0 1px #C75028;
@@ -3672,6 +3683,9 @@ html.light-theme .experience-lightbox .--container .--scroll-container .--scroll
 }
 html.light-theme .experience-lightbox .marquee .marquee--inner span {
   color: black !important;
+}
+html.light-theme .motivation blockquote {
+  color: white;
 }
 
 html.light-theme {

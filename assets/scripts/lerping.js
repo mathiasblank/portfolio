@@ -50,8 +50,8 @@ define('lerping', ['vars', 'TransformText'], function(vars, TransformText) {
             const rect = title.getBoundingClientRect();
 
             let offset = {
-                top: 200,
-                bottom: -200
+                top: 100,
+                bottom: -100
             };
             if (rect.top > window.innerHeight + offset.top || rect.bottom < -window.innerHeight + offset.bottom) return;
 

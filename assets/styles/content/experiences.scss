@@ -189,6 +189,8 @@ body #page_container #page > main {
                                         flex-direction: column;
                                         align-items: center;
                                         justify-content: center;
+
+                                        padding-bottom: $mm-spacing;
                 
                                         &:first-child {
                 
@@ -285,7 +287,7 @@ body #page_container #page > main {
                                     
                                     position: relative;
                                     
-                                    padding: $mm-spacing $sm-spacing 0 $sm-spacing;
+                                    padding: 0 $sm-spacing 0 $sm-spacing;
                 
                                     @media screen and (max-width: $tablet-max) {
                 

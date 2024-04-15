@@ -121,7 +121,9 @@ $border-space: .5rem;
         display: flex;
         justify-content: center;
 
-        transform: translate3d(-50%, -50%, 0) scale(2.5);
+        transform: translate3d(-50%, -50%, 0) scale(1);
+
+        font-size: 250%;
 
         opacity: 0;
 
