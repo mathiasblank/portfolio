@@ -149,5 +149,88 @@
         "dateTimes": [
             1714134766581
         ]
+    },
+    {
+        "pseudo": "hjk",
+        "score": 239,
+        "partyID": "1714138177417",
+        "level": 1,
+        "times": [
+            {
+                "min": 0,
+                "sec": 0,
+                "cen": 9
+            }
+        ],
+        "clicks": [
+            1
+        ],
+        "dateTimes": [
+            1714138191353
+        ]
+    },
+    {
+        "pseudo": "fsdsadf",
+        "score": 239,
+        "partyID": "1714138298026",
+        "level": 1,
+        "times": [
+            {
+                "min": 0,
+                "sec": 0,
+                "cen": 7
+            }
+        ],
+        "clicks": [
+            1
+        ],
+        "dateTimes": [
+            1714138303125
+        ]
+    },
+    {
+        "pseudo": "asd",
+        "score": 239,
+        "partyID": "1714138453036",
+        "level": 1,
+        "times": [
+            {
+                "min": 0,
+                "sec": 0,
+                "cen": 9
+            }
+        ],
+        "clicks": [
+            1
+        ],
+        "dateTimes": [
+            1714138541224
+        ]
+    },
+    {
+        "pseudo": "asd",
+        "score": 518,
+        "partyID": "1714138916325",
+        "level": 2,
+        "times": [
+            {
+                "min": 0,
+                "sec": 0,
+                "cen": 9
+            },
+            {
+                "min": 0,
+                "sec": 0,
+                "cen": 8
+            }
+        ],
+        "clicks": [
+            1,
+            1
+        ],
+        "dateTimes": [
+            1714138984236,
+            1714138989797
+        ]
     }
 ]

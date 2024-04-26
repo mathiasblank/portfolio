@@ -2429,6 +2429,28 @@ body.experiences-lightbox-active #page_container #page > main .experience-lightb
   border: 1.5px solid white;
 }
 
+.ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container .ctk-leaderboard--inner-content, .ctk-area .ctk-window.ctk-stats .wrapper > .ctk-stats--inner-content {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 1rem;
+}
+.ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container .ctk-leaderboard--inner-content > section, .ctk-area .ctk-window.ctk-stats .wrapper > .ctk-stats--inner-content > section {
+  width: 100%;
+}
+.ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container .ctk-leaderboard--inner-content > section header, .ctk-area .ctk-window.ctk-stats .wrapper > .ctk-stats--inner-content > section header {
+  font-weight: 100;
+}
+.ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container .ctk-leaderboard--inner-content > section article, .ctk-area .ctk-window.ctk-stats .wrapper > .ctk-stats--inner-content > section article {
+  display: flex;
+  justify-content: space-between;
+}
+.ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container .ctk-leaderboard--inner-content > section article:not(:last-child), .ctk-area .ctk-window.ctk-stats .wrapper > .ctk-stats--inner-content > section article:not(:last-child) {
+  border-bottom: 1.5px solid #292929;
+}
+.ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container .ctk-leaderboard--inner-content > section article > span, .ctk-area .ctk-window.ctk-stats .wrapper > .ctk-stats--inner-content > section article > span {
+  display: inline-flex;
+}
+
 /*********** Area ***********/
 .ctk-area {
   z-index: 1;
@@ -2460,6 +2482,7 @@ body.experiences-lightbox-active #page_container #page > main .experience-lightb
 .ctk-area .ctk-flash-msg {
   font-family: "Josefin Sans", sans-serif;
   font-size: clamp(24px, 7vw, 200px);
+  line-height: 1em;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -2471,6 +2494,9 @@ body.experiences-lightbox-active #page_container #page > main .experience-lightb
   transform: translate3d(-50%, -50%, 0) scale(1);
   font-size: 250%;
   opacity: 0;
+}
+.ctk-area .ctk-flash-msg::first-letter {
+  text-transform: capitalize;
 }
 .ctk-area .ctk-flash-msg:not(.active) {
   pointer-events: none;
@@ -2583,27 +2609,6 @@ body.experiences-lightbox-active #page_container #page > main .experience-lightb
 .ctk-area .ctk-window.ctk-stats .wrapper canvas {
   display: none;
 }
-.ctk-area .ctk-window.ctk-stats .wrapper > .ctk-stats--inner-content {
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 1rem;
-}
-.ctk-area .ctk-window.ctk-stats .wrapper > .ctk-stats--inner-content > section {
-  width: 100%;
-}
-.ctk-area .ctk-window.ctk-stats .wrapper > .ctk-stats--inner-content > section header {
-  font-weight: 100;
-}
-.ctk-area .ctk-window.ctk-stats .wrapper > .ctk-stats--inner-content > section article {
-  display: flex;
-  justify-content: space-between;
-}
-.ctk-area .ctk-window.ctk-stats .wrapper > .ctk-stats--inner-content > section article:not(:last-child) {
-  border-bottom: 1.5px solid #292929;
-}
-.ctk-area .ctk-window.ctk-stats .wrapper > .ctk-stats--inner-content > section article > span {
-  display: inline-flex;
-}
 .ctk-area .ctk-window.ctk-intro-player-message nav {
   display: flex;
   justify-content: center;
@@ -2614,22 +2619,92 @@ body.experiences-lightbox-active #page_container #page > main .experience-lightb
   justify-content: center;
   background-color: transparent;
 }
-.ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container {
-  display: grid;
-  grid-template-columns: repeat(5, auto);
-  gap: 1em;
+@media screen and (max-width: 62em) {
+  .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span {
+    display: none;
+  }
 }
-.ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:first-child, .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(2), .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(3), .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(4), .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(5) {
-  font-weight: 100;
+@media screen and (min-width: 62.0625em) {
+  .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    gap: 1em;
+  }
+  .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:first-child, .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(2), .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(3), .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(4), .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(5) {
+    font-weight: 100;
+  }
+  .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(6) {
+    color: #FF851B;
+  }
+  .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(7) {
+    color: #FF851B;
+  }
+  .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(8) {
+    color: #FF851B;
+  }
+  .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(9) {
+    color: #FF851B;
+  }
+  .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(10) {
+    color: #FF851B;
+  }
+  .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(11) {
+    color: #007BFF;
+  }
+  .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(12) {
+    color: #007BFF;
+  }
+  .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(13) {
+    color: #007BFF;
+  }
+  .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(14) {
+    color: #007BFF;
+  }
+  .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(15) {
+    color: #007BFF;
+  }
+  .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(16) {
+    color: #007BFF;
+  }
+  .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(17) {
+    color: #2ECC71;
+  }
+  .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(18) {
+    color: #2ECC71;
+  }
+  .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(19) {
+    color: #2ECC71;
+  }
+  .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(20) {
+    color: #2ECC71;
+  }
+  .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(21) {
+    color: #2ECC71;
+  }
+  .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(22) {
+    color: #2ECC71;
+  }
 }
-.ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(6) {
-  color: #FF851B;
+@media screen and (max-width: 62em) {
+  .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container .ctk-leaderboard--inner-content:first-of-type {
+    color: #FF851B;
+  }
+  .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container .ctk-leaderboard--inner-content:nth-of-type(2) {
+    color: #007BFF;
+  }
+  .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container .ctk-leaderboard--inner-content:nth-of-type(3) {
+    color: #2ECC71;
+  }
 }
-.ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(11) {
-  color: #007BFF;
-}
-.ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container > span:nth-child(16) {
-  color: #2ECC71;
+@media screen and (min-width: 62.0625em) {
+  .ctk-area .ctk-window.ctk-leaderboard .ctk-leaderboard-container .ctk-leaderboard--inner-content {
+    display: none;
+  }
 }
 .ctk-area .ctk-window:not(.active) {
   pointer-events: none;
@@ -2637,6 +2712,7 @@ body.experiences-lightbox-active #page_container #page > main .experience-lightb
 .ctk-area .ctk-window > .wrapper {
   max-width: 1000px;
   padding: 0.5rem;
+  padding-top: 2rem;
 }
 .ctk-area .ctk-window > .wrapper h3 {
   font-family: "Josefin Sans", sans-serif;

@@ -3,6 +3,10 @@
 $transition: .3s ease;
 $border-space: .5rem;
 
+$first-rank-color: #FF851B;
+$second-rank-color: #007BFF;
+$third-rank-color: #2ECC71;
+
 /*********** Extends classes ***********/
 
 %no-select {
@@ -40,6 +44,45 @@ $border-space: .5rem;
     border-radius: 50%;
 
     border: 1.5px solid $white;
+
+}
+
+%table {
+
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1rem;
+
+    > section {
+
+        width: 100%;
+
+        header {
+
+            font-weight: 100;
+
+        }
+
+        article {
+
+            display: flex;
+            justify-content: space-between;
+
+            &:not(:last-child) {
+
+                border-bottom: 1.5px solid #292929;
+
+            }
+
+            > span {
+
+                display: inline-flex;
+
+            }
+
+        }
+
+    }
 
 }
 
@@ -105,6 +148,7 @@ $border-space: .5rem;
 
         font-family: $font-family-design;
         font-size: $font-size-lm;
+        line-height: 1em;
 
         @extend %no-select;
 
@@ -126,6 +170,12 @@ $border-space: .5rem;
         font-size: 250%;
 
         opacity: 0;
+
+        &::first-letter {
+
+            text-transform: capitalize;
+
+        }
 
         &:not(.active) {
 
@@ -346,40 +396,7 @@ $border-space: .5rem;
     
                 > .ctk-stats--inner-content {
     
-                    display: flex;
-                    flex-direction: column-reverse;
-                    gap: 1rem;
-    
-                    > section {
-    
-                        width: 100%;
-    
-                        header {
-    
-                            font-weight: 100;
-    
-                        }
-    
-                        article {
-    
-                            display: flex;
-                            justify-content: space-between;
-    
-                            &:not(:last-child) {
-    
-                                border-bottom: 1.5px solid #292929;
-    
-                            }
-    
-                            > span {
-    
-                                display: inline-flex;
-    
-                            }
-    
-                        }
-    
-                    }
+                    @extend %table;
     
                 }
 
@@ -412,38 +429,103 @@ $border-space: .5rem;
         &.ctk-leaderboard {
 
             .ctk-leaderboard-container {
+                
+                @media screen and (max-width: 62em) {
 
-                display: grid;
-                grid-template-columns: repeat(5, auto);
-                gap: 1em;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
 
-                > span {
+                    > span {
 
-                    &:first-child,
-                    &:nth-child(2),
-                    &:nth-child(3),
-                    &:nth-child(4),
-                    &:nth-child(5) {
-
-                        font-weight: 100;
+                        display: none;
 
                     }
 
-                    &:nth-child(6) {
+                }
 
-                        color: #FF851B;
+                @media screen and (min-width: 62.0625em) {
+
+                    display: grid;
+                    grid-template-columns: repeat(5, auto);
+                    gap: 1em;
+    
+                    > span {
+    
+                        &:first-child,
+                        &:nth-child(2),
+                        &:nth-child(3),
+                        &:nth-child(4),
+                        &:nth-child(5) {
+    
+                            font-weight: 100;
+    
+                        }
+    
+    
+                        @for $i from 6 through 10 {
+    
+                            &:nth-child(#{$i}) {
+        
+                                color: $first-rank-color;
+        
+                            }
+    
+                        }
+    
+                        @for $i from 11 through 16 {
+    
+                            &:nth-child(#{$i}) {
+        
+                                color: $second-rank-color;
+        
+                            }
+    
+                        }
+    
+                        @for $i from 17 through 22 {
+    
+                            &:nth-child(#{$i}) {
+        
+                                color: $third-rank-color;
+        
+                            }
+    
+                        }
+    
+                    }
+
+                }
+
+                .ctk-leaderboard--inner-content {
+
+                    @extend %table;
+
+                    @media screen and (max-width: 62em) {
+
+                        &:first-of-type {
+
+                            color: $first-rank-color;
+
+                        }
+
+                        &:nth-of-type(2) {
+
+                            color: $second-rank-color;
+
+                        }
+
+                        &:nth-of-type(3) {
+
+                            color: $third-rank-color;
+
+                        }
 
                     }
 
-                    &:nth-child(11) {
+                    @media screen and (min-width: 62.0625em) {
 
-                        color: #007BFF;
-
-                    }
-
-                    &:nth-child(16) {
-
-                        color: #2ECC71;
+                        display: none;
 
                     }
 
@@ -463,6 +545,7 @@ $border-space: .5rem;
 
             max-width: 1000px;
             padding: $border-space;
+            padding-top: 2rem;
 
             h3 {
 

@@ -121,19 +121,23 @@
                 <li>A chaque niveau la difficulté augmente.</li>
                 <li>Au début de chaque niveau la clé est protégée par un bouclier d'invincibilité durant 3 secondes.</li>
                 <li>Vous pouvez à tout moment consulter vos résultats grâce au bouton dédié situé en haut de l'écran (non consultable en jeu).</li>
+                <li>Comparez-vous aux autres joueurs grâce au leaderboard accessible depuis le menu</li>
                 <!-- <li>Partagez l'aventure avec vos amis sur les réseaux sociaux:&nbsp;&nbsp;<span class="icon-facebook fb-ctk-btn"></span>&nbsp;&nbsp;<a href="https://twitter.com/intent/tweet" class="twitter-ctk-btn icon-twitter"></a></li> -->
             </ul>
 
             <h3>Note de mise à jour</h3>
-            <h4>1.1.0.0</h4>
+            <h4>1.1.0.0 <time datetime="2024-04-26">26.04.2024</time></h4>
             <ul>
                 <li>Le temps débute à la fin du bouclier d'invincibilité.</li>
                 <li>Un graphique lié au nombre de clics a été ajouté dans la partie statistiques.</li>
+                <li>Un classement "old school" avec statistiques liées</li>
             </ul>
 
-            <h3>Développement à venir</h3>
+            <h3>Développements à venir</h3>
             <ul>
-                <li>Tableau des scores</li>
+                <li>Leaderboard > Mise en avant du score actuel dans le leaderboard. Mise en avant du rang actuel.</li>
+                <li>Leaderboard > Détails des statistiques liées aux performances des joueurs du leaderboard.</li>
+                <li><s>Tableau des scores</s></li>
             </ul>
         </div>
     </section>

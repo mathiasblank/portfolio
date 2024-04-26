@@ -72,7 +72,8 @@ switch ($action) {
         ob_start();
 
         // - Headings
-        ?><span>Rang</span>
+        ?>
+        <span>Rang</span>
         <span>Joueur</span>
         <span>Score</span>
         <span>Niveau atteint</span>
@@ -82,6 +83,8 @@ switch ($action) {
         // - data  
         foreach ($data as $k => $d) {
 
+            $date = date('d.m.Y', round($d->dateTimes[array_key_last($d->dateTimes)] / 1000));
+
             // echo '<pre>'.print_r($d->dateTimes[array_key_last($d->dateTimes)], true).'</pre>';
 
             ?>
@@ -89,7 +92,26 @@ switch ($action) {
                 <span><?= $d->pseudo; ?></span>
                 <span><?= $d->score; ?></span>
                 <span><?= $d->level; ?></span>
-                <span><?= date('d.m.Y', round($d->dateTimes[array_key_last($d->dateTimes)] / 1000)); ?></span>
+                <span><?= $date; ?></span>
+
+                <div class="ctk-leaderboard--inner-content">
+                    <section>
+                        <header><?= ($k + 1) . ' ' . $d->pseudo; ?></header>
+                        <article>
+                            <span>Score</span>
+                            <span><?= $d->score; ?></span>
+                        </article>
+                        <article>
+                            <span>Niveau</span>
+                            <span><?= $d->level; ?></span>
+                        </article>
+                        <article>
+                            <span>Date</span>
+                            <span><?= $date; ?></span>
+                        </article>
+                    </section>
+                </div>
+
             <?php
 
         }
