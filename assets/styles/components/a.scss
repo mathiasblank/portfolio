@@ -4,6 +4,7 @@ a {
     color: inherit;
     cursor: none;
 
+    .as-mail,
     &[href^=mailto] {
 
         font-size: $font-size-lm;

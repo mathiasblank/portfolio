@@ -2,6 +2,34 @@
 
     .theme--#{$theme} {
 
+        input {
+
+            &[type=text] {
+        
+                color: white;
+        
+                &:focus {
+        
+                    border-color: $color;
+        
+                }
+        
+            }
+        
+        }
+
+        .circle-button {
+
+            border-color: $color;
+
+            &:hover {
+
+                background-color: $color;
+
+            }
+
+        }
+
         .theme-color {
 
             color: $color;

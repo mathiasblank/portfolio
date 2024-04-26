@@ -22,7 +22,7 @@
 
     &.key-white {
 
-        background-image: url(/app/public/img/key/white/fly.png) !important;
+        background-image: url(./../img/key/white/fly.png) !important;
 
     }
     
@@ -30,19 +30,19 @@
 
         transform: rotateY(180deg);
 
-        background-image: url(/app/public/img/key/white/fly.png) !important;
+        background-image: url(./../img/key/white/fly.png) !important;
 
     }
     
     &.key-blue {
-        background-image: url(/PERSO/portfolio2021/app/public/img/key/dark/fly.png) !important;
+        background-image: url(./../img/key/dark/fly.png) !important;
     }
     
     &.key-blue-reverse {
 
         transform: rotateY(180deg);
 
-        background-image: url(/PERSO/portfolio2021/app/public/img/key/dark/fly.png) !important;
+        background-image: url(./../img/key/dark/fly.png) !important;
     }
 
     &:after {

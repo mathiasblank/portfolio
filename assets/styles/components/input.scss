@@ -1,0 +1,23 @@
+input {
+
+    &[type=text] {
+
+        background: transparent;
+
+        appearance: none;
+
+        border: none;
+        border-bottom: 1px solid black;
+
+        color: white;
+
+        &:focus {
+
+            border-color: red;
+            outline: none;
+
+        }
+
+    }
+
+}

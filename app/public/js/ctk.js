@@ -14,6 +14,19 @@ const ctk = {
     nb_click : 0,
     score : 0,
 
+    stats : {
+
+        clicks_per_level : [],
+        times_per_level : []
+
+    },
+
+    charts : {
+
+        clicks : null
+
+    },
+
     msg : {
         t_catch:                'Catched!',
         t_play:                 'Play',
@@ -31,6 +44,7 @@ const ctk = {
 
         game_area : document.querySelector('#ctk_area'),
         stats_btn : document.querySelector('#ctk_stats_btn'),
+        leaderboard_btn : document.querySelector('#ctk_leaderboard_btn'),
         help_btn : document.querySelector('#ctk_help_btn'),
         stats : document.querySelector('#ctk_stats'),
         help : document.querySelector('#ctk_help'),
@@ -38,12 +52,14 @@ const ctk = {
         flash_msg : document.querySelector('#ctk_flash_msg'),
         level_msg : document.querySelector('#ctk_level_msg'),
         level_indic : document.querySelector('#ctk_level_indic'),
+        player_intro_msg : document.querySelector('#ctk_intro_player_message'),
         manager_btn : document.querySelector('#ctk_manager_btn'),
         min : document.querySelector('#ctk_time_min'),
         sec : document.querySelector('#ctk_time_sec'),
         cen : document.querySelector('#ctk_time_cen'),
         time : document.querySelector('#ctk_time'),
-        focuses : document.querySelectorAll('.ctk-focus')
+        focuses : document.querySelectorAll('.ctk-focus'),
+        clicksChartCanvas : document.querySelector('#stats_chart')
 
     },
 
@@ -73,9 +89,11 @@ ctk.elements.stats_content = ctk.elements.stats.querySelector('.ctk-stats--inner
 ctk.elements.play = ctk.elements.game_area.querySelector('.ctk-toggle-play[data-action="play"]');
 ctk.elements.pause = ctk.elements.game_area.querySelector('.ctk-toggle-play[data-action="pause"]');
 
+ctk.elements.player_intro_msg.querySelector('input')?.focus();
+
 var msg_busy = false;
 
-ctk.addFlashMsg = (message) => {
+ctk.addFlashMsg = (message, type) => {
 
     if (msg_busy) return;
 
@@ -83,6 +101,12 @@ ctk.addFlashMsg = (message) => {
 
     ctk.elements.flash_msg.innerHTML = message;
     ctk.elements.flash_msg.classList.add('active');
+
+    if (type !== 'error') {
+        ctk.elements.flash_msg.classList.remove('error');
+    } else {
+        ctk.elements.flash_msg.classList.add('error');
+    }
 
     setTimeout(() => {
 
@@ -147,9 +171,8 @@ ctk.time.start = () => {
         return false;
 
     }
-    
-    ctk.time.is_time_active = true;
 
+    ctk.time.is_time_active = true;
     ctk.time.run();
 
 };
@@ -157,7 +180,7 @@ ctk.time.start = () => {
 ctk.time.stop = () => {
 
     ctk.time.pause();
-    ctk.time.min = ctk.time.sec = ctk.time.cen = ctk.time.time = 0;
+    ctk.time.reset();
 
 };
 
@@ -165,6 +188,12 @@ ctk.time.restart = () => {
 
     ctk.time.stop();
     ctk.time.start();
+
+};
+
+ctk.time.reset = () => {
+
+    ctk.time.min = ctk.time.sec = ctk.time.cen = ctk.time.time = 0;
 
 };
 
@@ -188,17 +217,26 @@ ctk.setGameState = (value) => {
 
             mode = 'play';
 
-            ctk.elements.pause.classList.add('active');
             ctk.elements.play.classList.remove('active');
             ctk.elements.help_btn.classList.remove('active');
             ctk.elements.stats_btn.classList.remove('active');
+            ctk.elements.leaderboard_btn.classList.remove('active');
 
-            if (last_state == -1) {
-                
-                ctk.time.restart();
+            if (last_state == -1) { // - start a new level
 
-            } else if (last_state == 0) {
+                ctk.elements.time.style.opacity = 0; // - Hide timer during invicible shield
 
+                setTimeout(() => {
+
+                    ctk.time.restart();
+                    ctk.elements.pause.classList.add('active');
+                    ctk.elements.time.style.opacity = 1;
+
+                }, key.start_level_shield_time); // - according to the invicible shield
+
+            } else if (last_state == 0) { // - coming from pause
+
+                ctk.elements.pause.classList.add('active');
                 ctk.time.start();
 
             }
@@ -214,6 +252,7 @@ ctk.setGameState = (value) => {
             ctk.elements.pause.classList.remove('active');
             ctk.elements.play.classList.add('active');
             ctk.elements.help_btn.classList.add('active');
+            ctk.elements.leaderboard_btn.classList.add('active');
             ctk.elements.stats_btn.classList.add('active');
 
             ctk.time.pause();
@@ -229,6 +268,7 @@ ctk.setGameState = (value) => {
             ctk.elements.pause.classList.remove('active');
             ctk.elements.play.classList.remove('active');
             ctk.elements.help_btn.classList.add('active');
+            ctk.elements.leaderboard_btn.classList.add('active');
             ctk.elements.stats_btn.classList.add('active');
 
             ctk.time.stop();
@@ -266,21 +306,57 @@ ctk.setPulseClick = (active) => {
 
 };
 
+ctk.generateUniqPartyID = () => {
+
+    localStorage.partyID = Date.now() + Math.floor(Math.random() * 100);
+
+}
+
+ctk.beforeGame = () => {
+
+    ctk.elements.player_intro_msg.classList.add('active');
+    ctk.elements.player_intro_msg.querySelector('input').focus();
+    ctk.elements.help_btn.classList.remove('active');
+    ctk.elements.leaderboard_btn.classList.remove('active');
+
+    ctk.init();
+
+    key.center();
+    key.sprite_animation(true);
+    key.play();
+
+    // ctk.initGame();
+
+};
+
 ctk.initGame = () => {
 
     ctk.player_game_index++;
     ctk.is_game_mode_activated = true;
     ctk.elements.game_area.classList.add('active');
 
+    ctk.time.reset();
+
     ctk.setGameState(-1);
 
-    key.center();
-    key.sprite_animation(true);
+    ctk.generateUniqPartyID();
+
+    ctk.addFlashMsg(`Bon jeu ${localStorage.playerName}!`);
+
+    // key.center();
+    // key.sprite_animation(true);
+
+    setTimeout(() => {
+        key.center();
+    }, 100);
 
     ctk.setPulseClick(true);
 
-    // - Actions sur la clé
+};
 
+ctk.init = () => {
+
+    // - Actions sur la clé
     key.element.addEventListener('click', event => {
 
         // - Le jeu est en pause
@@ -340,6 +416,15 @@ ctk.initGame = () => {
 
             // - Update stats
             msg_nb_click = ctk.nb_click_level > 1 ? ctk.msg.t_nb_clicks : ctk.msg.t_nb_click;
+
+            ctk.stats.clicks_per_level.push(ctk.nb_click_level);
+            const level_time = {
+                "min" : parseInt(ctk.elements.min.innerHTML),
+                "sec" : parseInt(ctk.elements.sec.innerHTML),
+                "cen" : parseInt(ctk.elements.cen.innerHTML)
+            };
+            ctk.stats.times_per_level.push(level_time);
+
             const stats_level_info = `
                 <section>
                     <header>` + ctk.msg.t_level + ctk.level + `</header>
@@ -368,7 +453,104 @@ ctk.initGame = () => {
 
             }
 
+            // - Update player ranking stat
+            const new_score_data = {
+                "pseudo": localStorage.playerName,
+                "score": ctk.score,
+                "partyID" : localStorage.partyID,
+                "click" : ctk.nb_click_level,
+                "time" : level_time,
+                "level" : ctk.level,
+                "dateTime" : Date.now()
+            };
+
+            // - Init data for xhr query
+            var formData = new FormData();
+            formData.append('score', JSON.stringify(new_score_data));
+            formData.append('action', 'save-score');
+
+            // - Send XHR query
+            var saveRequest = new XMLHttpRequest();
+            saveRequest.open('POST', 'app/ajax.php', true);
+            saveRequest.send(formData);
+
+            // - Increase current level
             ctk.level++;
+
+            // - Update chart clics
+            if (ctk.charts.clicks != null) {
+
+                ctk.charts.clicks.destroy(); // - destroy existing chart
+
+            }
+
+            // - Define labels
+            var labels = [];
+            for (let index = 1; index < ctk.level; index++) {
+
+                labels.push('Level ' + index);
+                
+            }
+
+            var themeColor = 'white';
+
+            switch (localStorage.theme) {
+
+                case 'neon-blue':
+                    
+                    themeColor = '#34d3fb';
+
+                    break;
+
+                case 'neon-green':
+
+                    themeColor = '#2fff31';
+
+                    break;
+
+                case 'neon-orange':
+
+                    themeColor = '#ff6733';
+
+                    break;
+
+                case 'none-pink':
+
+                    themeColor = '#ff329c';
+
+                    break;
+
+            }
+
+            ctk.charts.clicks = new Chart(ctk.elements.clicksChartCanvas, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Clics',
+                        data: ctk.stats.clicks_per_level,
+                        borderColor: themeColor,
+                        borderWidth: 1,
+                        backgroundColor: themeColor,
+                        pointStyle: 'circle',
+                        pointRadius: 10,
+                        pointHoverRadius: 15
+                    }]
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: (ctx) => 'Point Style: ' + ctx.chart.data.datasets[0].pointStyle,
+                    }
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
 
             key.element.classList.add('catched');
             key.sprite_animation(false);
@@ -396,7 +578,7 @@ ctk.initGame = () => {
 
                 ctk.setPulseClick(true);
 
-            }, 3000);
+            }, key.start_level_shield_time);
 
             ctk.nb_click_level = 0;
 
@@ -422,6 +604,21 @@ ctk.initGame = () => {
             key.addShield();
 
         }
+
+    });
+
+    // ------------------------------------------------------------------------------------------------------------------------------------
+    // - Changement du pseudo
+    // ------------------------------------------------------------------------------------------------------------------------------------
+
+    const playerNameInputs = document.querySelectorAll('.ctk-player-name');
+    playerNameInputs.forEach(input => {
+
+        input.addEventListener('input', () => {
+
+            localStorage.playerName = input.value;
+            
+        });
 
     });
 
@@ -543,9 +740,48 @@ ctk.initGame = () => {
     });
 
     // ------------------------------------------------------------------------------------------------------------------------------------
+    // - Contrôle par clavier
+    // ------------------------------------------------------------------------------------------------------------------------------------
+
+    document.addEventListener('keydown', e => {
+
+        if (e.key == 'Enter' && ctk.elements.player_intro_msg.classList.contains('active')) {
+
+            checkPlayerName(ctk.elements.player_intro_msg);
+
+        }
+
+    });
+
+    // ------------------------------------------------------------------------------------------------------------------------------------
     // - Contrôle des fenêtres de jeu
     // ------------------------------------------------------------------------------------------------------------------------------------
     
+    const checkPlayerName = parent_window => {
+
+        const input = parent_window.querySelector('input');
+
+        if (input.value === '') {
+
+            console.log('empty value');
+
+            ctk.addFlashMsg('empty value', 'error');
+
+        } else if (input.value.length < 3) {
+
+            // console.log('3 chars min');
+            ctk.addFlashMsg('3 chars min', 'error');
+
+        } else {
+
+            localStorage.playerName = parent_window.querySelector('input').value;
+            ctk.initGame();
+            parent_window.classList.remove('active');
+
+        }
+
+    };
+
     document.querySelectorAll('.ctk-window-trigger').forEach(trigger => {
         
         const id = trigger.getAttribute('id');
@@ -554,8 +790,36 @@ ctk.initGame = () => {
         if (linked_window === null) return;
     
         trigger.addEventListener('click', () => {
+
+            if (trigger == ctk.elements.leaderboard_btn) {
+
+                // - Init data for xhr query
+                var formData = new FormData();
+                formData.append('action', 'get-leaderboard');
+
+                // - Send XHR query
+                var saveRequest = new XMLHttpRequest();
+                saveRequest.open('POST', 'app/ajax.php', true);
+                saveRequest.send(formData);
+
+                saveRequest.onload = () => {
+
+                    // console.log('load', saveRequest.responseText);
+
+                    const json = JSON.parse(saveRequest.responseText);
+
+                    document.querySelector('#ctk_leaderboard_container').innerHTML = json.html;
+
+                    linked_window.classList.add('active');
+
+                };
+
+            } else {
+
+                linked_window.classList.add('active');
+
+            }
     
-            linked_window.classList.add('active');
     
         });
     
@@ -567,7 +831,23 @@ ctk.initGame = () => {
 
         close.addEventListener('click', () => {
 
-            parent_window.classList.remove('active');
+            if (parent_window.classList.contains('ctk-intro-player-message')) {
+
+                if (close.dataset.redirect == 'home') {
+
+                    window.location.href = '/';
+
+                } else {
+
+                    checkPlayerName(parent_window);
+
+                }
+
+            } else {
+
+                parent_window.classList.remove('active');
+
+            }
 
         });
 

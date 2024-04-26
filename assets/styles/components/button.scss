@@ -14,3 +14,23 @@ button,
     border: 1px solid transparent;
 
 }
+
+.circle-button {
+
+    aspect-ratio: 1 / 1;
+    width: fit-content;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 50%;
+    background-color: transparent;
+    padding: .5em;
+    cursor: pointer;
+    transition: .2s ease-out;
+
+    &:hover {
+
+        color: white;
+
+    }
+
+}
